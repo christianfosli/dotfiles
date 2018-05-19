@@ -1,0 +1,7 @@
+[user]
+	name = Christian Fosli
+	email = c.fosli@stud.uis.no
+[help]
+	autocorrect = 20
+[credential]
+	helper = cache
