@@ -48,16 +48,19 @@ pip3 v 10+ >>> `pip3 cmd` funker ikke -> bruk `python3 -m pip cmd`
 ## Bra programmer
 
 * vim           git clone vim repo -> build from source
+
                 ./configure --with-features=huge --enable-python3interp=yes \
                             --with-python3-config-dir=/usr/lib/python3.6/config
-                sudo make install       (sjekk python dir)
+                sudo make install (sjekk python dir)
+                
                 Etterpå set som default editor++ Sjekk YouCompleteMe guide
+
 * git           apt
 * texlive       apt
 * screenfetch   apt                   display sysinfo
 * python3/pip3  apt
 * python-lang-server                  error/format check, help pages(til Ale)
-                pip3
+               `pip3 install python-language-server[all]`
 * vim-vint      pip3                  linting for vim (til Ale)
 * -yqq npm      apt
 * wsl-open      npm                   åpne apps med windows default

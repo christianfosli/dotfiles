@@ -11,4 +11,3 @@ TODO: Make a .sh script to automate all of this, that is:
   lftp, ...?? Dependencies needed for vim
 * Clone and build vim
 * Clone Github/vimconfig into ~/.vim
-* Create .vim/swapfiles directory
