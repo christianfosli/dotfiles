@@ -44,6 +44,13 @@ pip3 v 10+ >>> `pip3 cmd` funker ikke -> bruk `python3 -m pip cmd`
                       eller spesifiser full path /usr/local/bin/pip3
 
 -------------------------------
+## Special Keys Unix
+
+* `esc`   `CTRL-[`
+
+* `tab`   `CTRL-I`
+
+-------------------------------
 
 ## Bra programmer
 
