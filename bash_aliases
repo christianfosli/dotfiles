@@ -6,7 +6,5 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # Disse har Christian lagt til selv:
-alias cdone="cd /mnt/c/Users/ifosli/OneDrive\ -\ Universitetet\ i\ Stavanger/"
-alias cdgd="cd /mnt/c/Users/ifosli/Google\ Drive/"
-alias cdwhome="cd /mnt/c/Users/ifosli/"
+alias python="python3"
 # End egne ***
