@@ -15,3 +15,12 @@ pip3 install python-language-server[all]
 
 # Install applicable stuff from npm
 sudo npm install -g wsl-open
+
+# Install manually
+
+	# SDK  For gradle
+	# (needed due version on apt-get are old)
+curl -s "https://get.sdkman.io" | bash
+source '$HOME/.sdkman/bin/sdkman-init.sh'
+
+sdk install gradle
