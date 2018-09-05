@@ -3,9 +3,13 @@
 `ls`            List files in directory
 `ls -la`        List all files, and show permissions
 
-`grep txt`      filter (ex ls | grep .jar  ->  list all .jar files)
-  `grep -rHino` "string"
-                list files in directory with string in contents
+`grep pattern`      filter (ex ls | grep .jar  ->  list all .jar files)
+`grep -n pattern $file` 
+                    find lines in $file which has pattern
+  `grep -rn pattern *`
+  #OR `grep -rHino` pattern
+                recursively search for files containing pattern (also inside
+                directories inside current dir). Print matching lines!
 
 `mv filename dest`
         ex `mv qrg.txt ~/Desktop`
@@ -31,6 +35,9 @@
 
 CTRL-C        quit/cancel command
 CTRL-D        quit terminal
+CTRL-Z        suspend application ("go back to terminal")
+`fg`          go back to suspended app
+`jobs`        list suspended jobs
 
 `cmd.exe /C start filename`
                 Opens file in windows app
