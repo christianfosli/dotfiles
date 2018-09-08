@@ -13,8 +13,18 @@ alias l='ls -CF'
 
 alias python="python3"
 
-if hash open 2> /dev/null && ! hash see 2> /dev/null; then
-	alias see='open'
+# On fedora (and several linux distros) included vim doesn't include
+# clipboard support. Fix is to install gvim and use gvim -v instead
+if [ -f /usr/bin/gvim ]; then
+    alias vim='gvim -v'
+fi
+
+# Alias see to xdg-open on fedora
+if hash xdg-open 2> /dev/null && ! hash see 2> /dev/null; then
+    alias see='xdg-open'
+# Alias see to open on mac os
+elif hash open 2> /dev/null && ! hash see 2> /dev/null; then
+    alias see='open'
 fi
 
 # End egne --------------------------------

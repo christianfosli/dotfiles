@@ -1,10 +1,9 @@
 #!/bin/bash
 
-# TODO: Check pkgs
-
-# Install applicable stuffs from apt-get
+# Install applicable stuffs from apt-get (replace with applicable package manager)
 echo 'About to install some stuff from apt-get, will need a password in a sec'
-pkgs = 'cowsay default-jre default-jdk lftp nodejs npm pandoc python3 python3-dev screenfetch texlive xdg-tools'
+pkgs = 'cowsay java-openjdk lftp nodejs npm pandoc python3 python3-dev screenfetch texlive xdg-tools'
+
 for pkg in $pkgs
 do
 	sudo apt-get -y install $pkg
@@ -13,14 +12,17 @@ done
 # Install applicable stuffs from pip3
 pip3 install python-language-server[all]
 
-# Install applicable stuff from npm
-sudo npm install -g wsl-open
+# Install applicable stuff from NPM
+echo '*PLZ* answer No if your are not on Windows Subsystem for Linux::'
+read -p 'Do u wanna install wsl-open?' shouldInstall
+if [ $shouldInstall == y ]; then
+    echo 'installing wsl-open'
+    sudo npm install -g wsl-open
+else
+    echo 'skipping wsl'
+fi
 
-# Install manually
-
-	# SDK  For gradle
-	# (needed due version on apt-get are old)
-curl -s "https://get.sdkman.io" | bash
-source '$HOME/.sdkman/bin/sdkman-init.sh'
-
-sdk install gradle
+# Fix java version (requires used input)
+# ref https://fedoraproject.org/wiki/Java switching java versions is done
+# using the alternatives system
+alternatives --config java
