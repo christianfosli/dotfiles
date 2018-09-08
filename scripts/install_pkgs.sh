@@ -2,7 +2,7 @@
 
 # Install applicable stuffs from apt-get (replace with applicable package manager)
 echo 'About to install some stuff from apt-get, will need a password in a sec'
-pkgs = 'cowsay java-openjdk lftp nodejs npm pandoc python3 python3-dev screenfetch texlive xdg-tools'
+pkgs = 'cowsay java-openjdk lftp nodejs npm pandoc python3 python3-dev rclone screenfetch texlive xdg-tools'
 
 for pkg in $pkgs
 do
@@ -25,4 +25,6 @@ fi
 # Fix java version (requires used input)
 # ref https://fedoraproject.org/wiki/Java switching java versions is done
 # using the alternatives system
+echo 'if there are installed several java versions u need to specify'
+echo 'which one to use. Opening `alternatives --config java` '
 alternatives --config java
