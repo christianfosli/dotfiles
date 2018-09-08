@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Use this to quickly sync onedrive and google drive
-echo 'Sycing local changed to remotes'
+echo 'Sycing local changes to remotes'
 rclone sync ~/OneDrive/ onedrive:
 rclone sync ~/GoogleDrive/ googledrive:
 echo 'Sycing remotes to local dirs'

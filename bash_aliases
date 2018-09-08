@@ -12,7 +12,7 @@ alias l='ls -CF'
 # Added myself: --------------------------
 
 alias python='python3'
-alias syncpls='scripts/sync.sh'
+alias syncpls='~/dotfiles/scripts/sync.sh'
 
 # On fedora (and several linux distros) included vim doesn't include
 # clipboard support. Fix is to install gvim and use gvim -v instead
