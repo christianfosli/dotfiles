@@ -7,6 +7,9 @@ fi
 
 # User specific aliases and functions
 
+# Simple bash prompt with colors
+PS1='\e[0;32m[\u@\h \W]\e[m\$ '
+
 # don't put duplicate lines or lines starting with space in the history.
 # (ubuntu default)
 HISTCONTROL=ignoreboth
