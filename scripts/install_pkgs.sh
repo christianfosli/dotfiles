@@ -1,15 +1,27 @@
 #!/bin/bash
 
-# Install applicable stuffs from apt-get (replace with applicable package manager)
-echo 'About to install some stuff from apt-get, will need a password in a sec'
-pkgs = 'cowsay java-openjdk lftp nodejs npm pandoc python3 python3-dev rclone screenfetch texlive xdg-tools'
+# Check which package manager to use
+if hash apt-get; then
+    packageManager='apt-get'
+    apt-get update
+else if hash dnf; then
+    packageManager='dnf'
+else
+    echo 'Unable to figure out which package manager to use'
+    echo 'Please Ctrl-C to cancel, and edit script file'
+fi
+
+# Install applicable stuffs
+echo 'installing applicables from your package manager -- will need password'
+pkgs = 'cowsay java-openjdk lftp nodejs npm pandoc python3 python3-devel rclone screenfetch texlive xdg-tools'
 
 for pkg in $pkgs
 do
-	sudo apt-get -y install $pkg
+	sudo $packageManager install -y $pkg
 done
 
 # Install applicable stuffs from pip3
+echo 'installing applicables from pip'
 pip3 install python-language-server[all]
 
 # Install applicable stuff from NPM
