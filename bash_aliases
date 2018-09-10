@@ -5,9 +5,13 @@
 shopt -s expand_aliases
 
 # Copied from default Ubuntu bashrc:
+alias ls='ls --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 # Added myself: --------------------------
 
@@ -27,5 +31,3 @@ if hash xdg-open 2> /dev/null && ! hash see 2> /dev/null; then
 elif hash open 2> /dev/null && ! hash see 2> /dev/null; then
     alias see='open'
 fi
-
-# End egne --------------------------------
