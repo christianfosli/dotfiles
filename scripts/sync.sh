@@ -9,7 +9,7 @@
 parentDir=$HOME'/dotfiles/scripts/'
 printf 'cd-ing to %s\n' $parentDir
 cd $parentDir
-printf 'sync.sh - actioned %s\n' $(date +'%Y%m%H%M') &>> sync.log
+printf 'sync.sh - actioned %s\n' $(date +'%Y-%m-%d-%H%M') &>> sync.log
 
 # check for changes
 echo 'Checking for local changes since the last sync...'
