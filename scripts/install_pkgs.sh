@@ -1,37 +1,39 @@
 #!/bin/bash
 
-# Check which package manager to use
-if hash apt-get; then
-    packageManager='apt-get'
-    apt-get update
-else if hash dnf; then
-    packageManager='dnf'
-else
-    echo 'Unable to figure out which package manager to use'
-    echo 'Please Ctrl-C to cancel, and edit script file'
-fi
+# Set variables
+pkgs='cowsay java-openjdk-devel lftp nodejs npm pandoc python3 python3-devel rclone screenfetch texlive xdg-tools'
+gui_pkgs='chromium gnome-tweaks'
+gui=1 # make 0 if no gui
+wsl=0 # make 1 of on wsl
+pkgManager='dnf'
 
-# Install applicable stuffs
-echo 'installing applicables from your package manager -- will need password'
-pkgs = 'cowsay java-openjdk lftp nodejs npm pandoc python3 python3-devel rclone screenfetch texlive xdg-tools'
+echo 'WARNING: Please ensure variables are properly set in script file'
+echo 'If not cancel script with Ctrl-C and edit script file'
+printf 'Current values: GUI=%d, WSL=%d, pkgManager=%s\n' $gui $wsl $pkgManager
+sleep 5s
 
-for pkg in $pkgs
-do
-	sudo $packageManager install -y $pkg
+# Install non-gui apps
+echo 'installing applicables from your package manager - will need password'
+for pkg in $pkgs; do
+	sudo $pkgManager install -y $pkg
 done
+
+# Install gui apps
+if ($gui == 1); then
+    echo 'installing gui apps'
+    for gui_pkg in $gui_pkgs; do
+        sudo $pkgManager install -y $gui_pkg
+    done
+fi
 
 # Install applicable stuffs from pip3
 echo 'installing applicables from pip'
 pip3 install python-language-server[all]
 
 # Install applicable stuff from NPM
-echo '*PLZ* answer No if your are not on Windows Subsystem for Linux::'
-read -p 'Do u wanna install wsl-open?' shouldInstall
-if [ $shouldInstall == y ]; then
+if [ $wsl == 1 ]; then
     echo 'installing wsl-open'
     sudo npm install -g wsl-open
-else
-    echo 'skipping wsl'
 fi
 
 # Fix java version (requires used input)
