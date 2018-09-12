@@ -22,14 +22,14 @@ fi
 printf 'Last change ~/OneDrive at %s, Last change ~/GoogleDrive %s, Last sync %s\n' $lastchange_one $lastchange_dri $lastsync
 
 # sync local changes to remotes
-if ((lastchange_one > lastsync)); then
+if ((lastchange_one >= lastsync)); then
     echo 'Syncing ~/OneDrive to remote'
     rclone --log-file=sync.log sync ~/OneDrive/ onedrive:
     echo '~/OneDrive synced to remote' &>> sync.log
     date +'%Y%m%d%H%M' > last_synced
 fi
 
-if ((lastchange_dri > lastsync)); then
+if ((lastchange_dri >= lastsync)); then
     echo 'Syncing ~/GoogleDrive to remote'
     rclone sync --log-file=sync.log ~/GoogleDrive/ googledrive:
     echo '~/GoogleDrive synced to remote' &>> sync.log

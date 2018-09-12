@@ -103,3 +103,9 @@ pip3 v 10+ >>> `pip3 cmd` funker ikke -> bruk `python3 -m pip cmd`
 
 ALT F2          New window
 ALT ENTER       Full screen
+
+------------------------------
+
+## Fedora Gnome-Terminal
+
+`gnome-terminal --show-menubar`  show the menubar

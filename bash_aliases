@@ -15,7 +15,6 @@ alias egrep='egrep --color=auto'
 
 # Added myself: --------------------------
 
-alias python='python3'
 alias syncpls='~/dotfiles/scripts/sync.sh'
 
 # On fedora (and several linux distros) included vim doesn't include

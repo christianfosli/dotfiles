@@ -32,3 +32,11 @@ export EDITOR=$VISUAL
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+# Open GNU Screen if not already in Sreen
+# - get $TERM up to the period : screen.xterm-256 -> screen
+# - then compare to "screen"
+cutTermStr=$(echo $TERM | cut -d'.' -f 1)
+if [[ $cutTermStr != "screen" ]]; then
+    screen
+fi
