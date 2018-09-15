@@ -19,8 +19,8 @@ alias syncpls='~/dotfiles/scripts/sync.sh'
 
 # On fedora (and several linux distros) included vim doesn't include
 # clipboard support. Fix is to install gvim and use gvim -v instead
-if [ -f /usr/bin/gvim ]; then
-    alias vim='gvim -v'
+if hash vimx; then
+    alias vim='vimx'
 fi
 
 # Alias see to xdg-open on fedora
