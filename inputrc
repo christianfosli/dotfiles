@@ -1,13 +1,4 @@
 $include /etc/inputrc
 
-# Use vi, rather than emacs, style editing in bash and other supported programs
-# note: to open commandline in vim use 'v' from normal mode
-set editing-mode vi
-set show-mode-in-prompt
-
-set keymap vi-command
-"k": history-search-backward
-"j": history-search-forward
-
 # Proper completion for symlinked directories
 set mark-symlinked-directories on
