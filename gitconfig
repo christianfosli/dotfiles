@@ -1,7 +1,10 @@
 [user]
 	name = Christian Fosli
-	email = c.fosli@stud.uis.no
+	email = cfosli@gmail.com
 [help]
 	autocorrect = 20
 [credential]
 	helper = cache
+[credential "https://github.com"]
+	username = christianfosli
+	# Dont store password here! Not encrypted!
