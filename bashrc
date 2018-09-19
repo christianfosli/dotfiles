@@ -7,8 +7,9 @@ fi
 
 # User specific aliases and functions
 
-# Simple bash prompt with colors
-PS1='\e[0;32m[\u@\h \W]\e[m\$ '
+# Simple bash prompt with colors and git branch!
+source /usr/share/git-core/contrib/completion/git-prompt.sh
+PS1='\e[0;32m[\u@\h \W$(__git_ps1 2>/dev/null "\e[33m (%s)")\e[32m] \e[m\$ '
 
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
