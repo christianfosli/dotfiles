@@ -22,7 +22,7 @@ if [ -d ~/.local/bin ]; then
 fi
 
 # Set vim to default editor
-if hash vimx; then
+if hash vimx 2> /dev/null; then
     export VISUAL=vimx
 else
     export VISUAL=vim

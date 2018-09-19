@@ -5,7 +5,10 @@
 shopt -s expand_aliases
 
 # Copied from default Ubuntu bashrc:
-alias ls='ls --color=auto'
+# Note: Mac OS version of ls doesnt support --color=auto
+if [ "$(uname -s)" != "Darwin" ]; then
+    alias ls='ls --color=auto'
+fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -19,7 +22,7 @@ alias syncpls='~/dotfiles/scripts/sync.sh'
 
 # On fedora (and several linux distros) included vim doesn't include
 # clipboard support. Fix is to install gvim and use gvim -v instead
-if hash vimx; then
+if hash vimx 2> /dev/null; then
     alias vim='vimx'
 fi
 

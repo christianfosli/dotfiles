@@ -1,5 +1,4 @@
-hardstatus always
-hardstatus string "%-w [screen %n: %t] %+w"
-# %-w    list windows before current window
-# %n: %t current window number and title (like default)
-# %+w   list windows after  current window
+hardstatus alwayslastline
+hardstatus string "%w %= %d %c"
+# %w    lists windows
+# %d %c day number and clock
