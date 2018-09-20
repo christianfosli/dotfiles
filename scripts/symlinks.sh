@@ -2,13 +2,15 @@
 
 # Script creates symlinks from ~ to ~/dotfiles
 
-files='bash_aliases bashrc gitconfig inputrc'
+files='bash_aliases bashrc gitconfig inputrc tmux.conf'
 
 # Back-up existing files:
 echo 'Backing up current dotfiles to ~/old_dotfiles'
 mkdir ~/old_dotfiles
 for file in $files; do
-    mv ~/.$file ~/old_dotfiles/.$file
+    if [ -f ~/.$file ]; then
+        mv ~/.$file ~/old_dotfiles/.$file
+    fi
 done
 
 # Create symlinks to dotfiles repo

@@ -1,4 +1,0 @@
-hardstatus alwayslastline
-hardstatus string "%w %= %d %c"
-# %w    lists windows
-# %d %c day number and clock

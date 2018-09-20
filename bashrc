@@ -35,9 +35,9 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# Open GNU Screen if not already in Sreen
+# Open tmux if not already in tmux
 # use cut to make screen.xterm-256 -> screen
-cutTermStr=$(echo $TERM | cut -d'.' -f 1)
-if [[ $cutTermStr != 'screen' ]]; then
-    screen
+cutTermStr=$(echo $TERM | cut -d'-' -f 1)
+if [[ $cutTermStr != 'screen' && $cutTermStr != 'tmux' ]]; then
+    tmux
 fi
