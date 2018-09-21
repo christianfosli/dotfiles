@@ -7,8 +7,14 @@ fi
 
 # User specific aliases and functions
 
-# Simple bash prompt with colors and git branch!
-source /usr/share/git-core/contrib/completion/git-prompt.sh
+# Source git-prompt.sh to enable it for bash prompt
+if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
+    source /usr/share/git-core/contrib/completion/git-prompt.sh
+elif [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
+    source /usr/local/etc/bash_completion.d/git-prompt.sh 
+fi
+
+# Simple bash prompt, based on fedora default, with colors and git branch!
 PS1='\e[0;32m[\u@\h \W$(__git_ps1 2>/dev/null "\e[33m (%s)")\e[32m] \e[m\$ '
 
 # don't put duplicate lines or lines starting with space in the history.
