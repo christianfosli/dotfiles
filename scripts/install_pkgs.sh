@@ -19,7 +19,7 @@ for pkg in $pkgs; do
 done
 
 # Install gui apps
-if ($gui == 1); then
+if [[ $gui -eq 1 ]]; then
     echo 'installing gui apps'
     for gui_pkg in $gui_pkgs; do
         sudo $pkgManager install -y $gui_pkg
@@ -31,7 +31,7 @@ echo 'installing applicables from pip'
 pip3 install python-language-server[all]
 
 # Install applicable stuff from NPM
-if [ $wsl == 1 ]; then
+if [[ $wsl -eq 1 ]]; then
     echo 'installing wsl-open'
     sudo npm install -g wsl-open
 fi
