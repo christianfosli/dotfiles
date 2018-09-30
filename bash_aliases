@@ -13,7 +13,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 # Mac version of ls doesnt support --color=auto, and dont have ip command
-[ "$(uname -s)" == "Darwin" ] || alias ls='ls --color=auto' && alias ip='ip --color'
+[[ "$(uname -s)" == "Darwin" ]] || { alias ls='ls --color=auto'; alias ip='ip --color'; }
 
 # Script to sync onedrive and google drive
 alias syncpls='~/dotfiles/scripts/sync.sh'
