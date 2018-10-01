@@ -55,8 +55,13 @@ personal information such as my name and email address.**
 
   * SSH `ssh username@ip`
 
+    * Start ssh service to allow log-ins (fedora) `systemctl start sshd.service`
+
+  * Copy files between local computer and remote 
+    `scp $file username@ip:/home/$dir` or `scp username@ip:/home/$file $localdir`
+
   * Check wifi devices, connect to wifi networks etc 
-    `nmcli device ...`, `nmcli radio ...`, `nmcli connection ...`
+    `nmcli radio ...`, `nmcli device wifi...`, `nmcli connection ...`
 
 ## quick-ref git
 
