@@ -166,7 +166,15 @@ personal information such as my name and email address.**
 
 ## quick-ref tmux
 
+* list sessions `tmux ls` or `Ctrl-b s`
+
+* attach `tmux attach #`
+
 * rename window `Ctrl-b ,`
+
+* new pane `Ctrl-b "` or `Ctrl-b %`
+
+* toggle layouts `Ctrl-b <space>`
 
 * resize panes `Ctrl-b alt-arrows`
 
