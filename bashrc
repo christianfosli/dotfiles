@@ -13,8 +13,12 @@ elif [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
 fi
 
 # Bash prompt, based on fedora default, but with color and git branch!
-PS1='\[\e[0;32m\][\u@\h \W$(__git_ps1 2>/dev/null " 🌳%s")]\[\e[m\] \$ '
-# note non-printing parts are escaped inside \[ ... \] so readline knows PS1 length
+# note non-printing parts are escaped inside \[ ... \] to make length known
+if [[ -n $SSH_CLIENT ]]; then
+    PS1='\[\e[0;32m\][@\h \W$(__git_ps1 2>/dev/null " 🌳%s")]\[\e[m\] \$ '
+else
+    PS1='\[\e[0;32m\][\W$(__git_ps1 2>/dev/null " 🌳%s")]\[\e[m\] \$ '
+fi
 
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
