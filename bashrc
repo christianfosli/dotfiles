@@ -22,15 +22,8 @@ HISTCONTROL=ignoreboth
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# Add ~/.local/bin to path
-[[ -d ~/.local/bin ]] && export PATH+='~/.local/bin'
-
-# Set vim to default editor (use vimx if we have it)
-hash vimx 2> /dev/null && export VISUAL=vimx || export VISUAL=vim
-export EDITOR=$VISUAL
-
 # Alias definitions
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 
-# Open tmux if not already in tmux
-[[ $TERM == screen* || $TERM == tmux* ]] || tmux
+# Open tmux (and attach if possible) when not already inside tmux
+[[ $TERM == screen* || $TERM == tmux* ]] || tmux attach || tmux

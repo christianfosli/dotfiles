@@ -12,22 +12,19 @@ alias egrep='egrep --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-# Mac version of ls doesnt support --color=auto, and dont have ip command
-[[ "$(uname -s)" == "Darwin" ]] || { alias ls='ls --color=auto'; alias ip='ip --color'; }
+
+if [[ "$(uname -s)" == "Darwin" ]]; then # Mac-only aliases:
+        hash /usr/local/bin/vim 2> /dev/null && alias vim=/usr/local/bin/vim
+        alias see='open'
+        alias ls='ls -G'
+else    # Linux-only aliases (not supported on Mac OS)
+        # On most distros vim doesn't have clipboard support, but vimx does
+        hash vimx 2> /dev/null && alias vim='vimx'
+        alias ls='ls --color=auto'
+        alias ip='ip --color'
+        alias cal='cal --monday'
+        hash see 2> /dev/null || alias see='xdg-open'
+fi
 
 # Script to sync onedrive and google drive
 alias syncpls='~/dotfiles/scripts/sync.sh'
-
-# Calendar should start on monday, not sunday (not supported on mac)
-[ "$(uname -s)" == "Darwin" ] || alias cal='cal --monday'
-
-# On fedora (and several linux distros) included vim doesn't include
-# clipboard support. Fix is to install vim-x11 and use vimx instead
-hash vimx 2> /dev/null && alias vim='vimx'
-
-# Alias see to xdg-open on fedora, and to open on Mac os
-if hash xdg-open 2> /dev/null; then
-    hash see 2> /dev/null || alias see='xdg-open'
-elif hash open 2> /dev/null; then
-    hash see 2> /dev/null || alias see='open'
-fi
