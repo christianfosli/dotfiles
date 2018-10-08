@@ -2,9 +2,6 @@
 # file: ~/.bash_aliases  (sourced from ~/.bashrc)
 # author: Christian Fosli <cfosli@gmail.com>
 
-# Make this file work also for non-login shells (i.e vim terminal):
-shopt -s expand_aliases
-
 # Get some colors (Most are from default ubuntu .bashrc)
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -13,6 +10,10 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# Fix command like in vim command line window
+alias q:=fc
+
+# Mac / Linux specific
 if [[ "$(uname -s)" == "Darwin" ]]; then # Mac-only aliases:
         hash /usr/local/bin/vim 2> /dev/null && alias vim=/usr/local/bin/vim
         alias see='open'
