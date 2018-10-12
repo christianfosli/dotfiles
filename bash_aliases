@@ -1,6 +1,7 @@
 #!/bin/bash
 # file: ~/.bash_aliases  (sourced from ~/.bashrc)
 # author: Christian Fosli <cfosli@gmail.com>
+shopt -s expand_aliases
 
 # Get some colors (Most are from default ubuntu .bashrc)
 alias grep='grep --color=auto'
