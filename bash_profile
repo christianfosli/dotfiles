@@ -26,3 +26,6 @@ export EDITOR=$VISUAL
 if [[ "$(uname -s)" == "Darwin"  ]]; then
     export LSCOLORS='Exgxcxdxbxegedabagacad'
 fi
+
+# Don't color executables on WSL (as all windows files on /mnt/c are exec)
+[[ -d /mnt/c ]] && export LS_COLORS="ex=0"
