@@ -24,7 +24,7 @@ else    # Linux-only aliases (not supported on Mac OS)
         hash vimx 2> /dev/null && alias vim='vimx'
         alias ls='ls --color=auto'
         alias ip='ip --color'
-        alias cal='cal --monday'
+        alias cal='ncal -bMw'
         hash see 2> /dev/null || alias see='xdg-open'
 fi
 
