@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Set variables
-pkgs='cowsay java-openjdk-devel lftp nodejs npm pandoc python3 python3-devel rclone screenfetch tmux texlive xdg-tools'
+pkgs='cowsay java-openjdk-devel lftp nodejs npm pandoc python3 python3-devel python3-pip rclone screenfetch tmux texlive xdg-tools'
 gui_pkgs='chromium gnome-tweaks'
-gui=1 # make 0 if no gui
-wsl=0 # make 1 of on wsl
-pkgManager='dnf'
+gui=0 # make 0 if no gui
+wsl=1 # make 1 of on wsl
+pkgManager='apt'
 
 echo 'WARNING: Please ensure variables are properly set in script file'
 echo 'If not cancel script with Ctrl-C and edit script file'
@@ -28,7 +28,7 @@ fi
 
 # Install applicable stuffs from pip3
 echo 'installing applicables from pip'
-pip3 install python-language-server[all]
+pip3 install --user python-language-server[all]
 
 # Install applicable stuff from NPM
 if [[ $wsl -eq 1 ]]; then
