@@ -15,7 +15,7 @@ export PATH
 # Set vim to default editor
 if hash vimx 2> /dev/null; then # Use vimx if we have it
     export VISUAL=vimx
-elif hash /usr/local/bin/vim 2> /dev/null; then # Use homebrew-vim on Mac OS
+elif -f /usr/local/bin/vim 2> /dev/null; then # Use homebrew-vim on Mac OS
     export VISUAL=/usr/local/bin/vim
 else
     export VISUAL=vim
