@@ -2,7 +2,7 @@
 
 # Script creates symlinks from ~ to ~/dotfiles
 
-files='bash_aliases bash_profile bashrc gitconfig inputrc tmux.conf'
+files='bash_aliases bash_profile bashrc inputrc tmux.conf'
 
 # Back-up existing files:
 echo 'Backing up current dotfiles to ~/old_dotfiles'
