@@ -1,8 +1,5 @@
 # .bash_profile
 
-# Get the aliases and functions
-[[ -f ~/.bashrc ]] && . ~/.bashrc
-
 # Add applicable dirs to path (if they are not there already and they exist)
 pathdirs="$HOME/.local/bin /usr/local/bin $HOME/bin $HOME/Library/Python/3.6/bin"
 for p in $pathdirs; do
@@ -29,3 +26,7 @@ fi
 
 # Don't color executables on WSL (as all windows files on /mnt/c are exec)
 [[ -d /mnt/c ]] && export LS_COLORS="ex=0"
+
+# Get the aliases and functions
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+
