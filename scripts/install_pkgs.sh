@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set variables
-pkgs='cowsay java-openjdk-devel lftp nodejs npm pandoc python3 python3-devel python3-pip rclone screenfetch tmux texlive xdg-tools'
+pkgs='cowsay java-openjdk-devel nodejs npm pandoc python3 python3-devel python3-pip rclone screenfetch tmux texlive xdg-tools'
 gui_pkgs='chromium gnome-tweaks'
 gui=0 # make 0 if no gui
 wsl=1 # make 1 of on wsl
