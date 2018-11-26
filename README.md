@@ -63,6 +63,9 @@ personal information such as my name and email address.**
   * Check wifi devices, connect to wifi networks etc 
     `nmcli radio ...`, `nmcli device wifi...`, `nmcli connection ...`
 
+* quick commandline calculator: *bc* (reads from filename or stdin) ex:
+  `printf "5*10\n" | bc`
+
 ## quick-ref git
 
 * Init
