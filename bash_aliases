@@ -14,18 +14,19 @@ alias l='ls -CF'
 # Fix command like in vim command line window
 alias q:=fc
 
-# Mac / Linux specific
-if [[ "$(uname -s)" == "Darwin" ]]; then # Mac-only aliases:
-        hash /usr/local/bin/vim 2> /dev/null && alias vim=/usr/local/bin/vim
-        alias see='open'
-        alias ls='ls -G'
-else    # Linux-only aliases (not supported on Mac OS)
-        # On most distros vim doesn't have clipboard support, but vimx does
-        hash vimx 2> /dev/null && alias vim='vimx'
-        alias ls='ls --color=auto'
-        alias ip='ip --color'
-        alias cal='ncal -bMw'
-        hash see 2> /dev/null || alias see='xdg-open'
+# Mac / Linux / Windows (git-bash) specific
+if [[ "$(uname -s)" == "Darwin" ]]; then     # Mac-only:
+    hash /usr/local/bin/vim 2> /dev/null && alias vim=/usr/local/bin/vim
+    alias see='open'
+    alias ls='ls -G'
+elif [[ "$(uname -s)" == "MINGW64"* ]]; then # Git-bash only:
+    alias see='start'
+else    # Linux-only aliases (use vimx to get clipboard support)
+    hash vimx 2> /dev/null && alias vim='vimx'
+    alias ls='ls --color=auto'
+    alias ip='ip --color'
+    alias cal='ncal -bMw'
+    hash see 2> /dev/null || alias see='xdg-open'
 fi
 
 # Script to sync onedrive and google drive
