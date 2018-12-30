@@ -29,5 +29,7 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # Alias definitions
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 
-# Open tmux if no tmux sessions exist (when `tmux ls` gives non-zero exit code)
-tmux ls &> /dev/null || tmux
+# Open tmux if its installed and no tmux sessions exist
+if hash tmux 2> /dev/null; then
+    tmux ls &> /dev/null || tmux
+fi
