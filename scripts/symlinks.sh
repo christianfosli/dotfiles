@@ -2,22 +2,38 @@
 
 # Script creates symlinks from ~ to ~/dotfiles
 
-files='bash_aliases bash_profile bashrc inputrc tmux.conf'
+public_dotfiles='bash_aliases bash_profile bashrc inputrc tmux.conf'
+private_dotfiles='gitconfig'
 
-# Back-up existing files:
-echo 'Backing up current dotfiles to ~/old_dotfiles'
+# Back-up existing files
+printf 'Backing up current dotfiles to ~/old_dotfiles\n'
 mkdir ~/old_dotfiles
-for file in $files; do
+
+for file in $public_dotfiles; do
+    if [ -f ~/.$file ]; then
+        mv ~/.$file ~/old_dotfiles/.$file
+    fi
+done
+
+for file in $private_dotfiles; do
     if [ -f ~/.$file ]; then
         mv ~/.$file ~/old_dotfiles/.$file
     fi
 done
 
 # Create symlinks to dotfiles repo
-echo 'Creating symlinks for dotfiles'
-for file in $files
+printf 'Creating symlinks for public dotfiles\n'
+
+for file in $public_dotfiles
 do
-	ln -s ~/dotfiles/$file ~/.$file
+    ln -s ~/dotfiles/$file ~/.$file
 done
 
-echo 'Finished with dotfile symlinks!'
+printf 'Creating symlinks from private dotfiles\n'
+
+[[ -d ~/dotfiles_private ]] || git clone https://github.com/christianfosli/dotfiles_private
+
+for file in $private_dotfiles
+do
+    ln -s ~/dotfiles_private/$file ~/.$file
+done
