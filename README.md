@@ -3,8 +3,9 @@
 I use this repo to backup and keep in sync my bash/git/tmux ++
 config files.
 
-**I advise against using these dotfiles directly, as they contain
-personal information such as my name and email address.**
+**I advise against using these dotfiles directly.
+Some commands may only work specifically on my set-up or in my workflow.
+Feel free to copy relevant bits into your own dotfiles**
 
 ## set up
 
@@ -27,7 +28,7 @@ personal information such as my name and email address.**
   * Go to beginning of line `Ctrl-a`
   * Go to end of line `Ctrl-e`
   * Delete line `Ctrl-x <Backspace>`
-  * Open command in $EDITOR, execute upon exit `Ctrl-x Ctrl-e`
+  * Open command in $EDITOR, execute upon exit `Ctrl-x Ctrl-e` or `fc`
 
 * Very basics:: moving files/folders `mv source dest`, copying
   files/folders `cp source dest`, change directory `cd $dir`
@@ -39,11 +40,16 @@ personal information such as my name and email address.**
 * Copy file contents to clipboard (on WSL) `cat $file | clip.exe`
 
 * Recursively search for "pattern" and print matching lines and
-  line numbers `grep -rn pattern *`
+  line numbers `grep -rn pattern dir`  (use `.` for `dir` for current)
+  
+  * Exclude dir: `grep -rn --exclude-dir=node_modules pattern dir`
+
+  * Exclude `.gitignore`: `git grep -n pattern dir`
 
 * Create symlink `ln -s actual_file_path symlink_path`
 
-* List all files in long format (with permissions and stuff) `ls -la` 
+* List all files in long format (with permissions and stuff) `ls -la`
+  (usually aliased to `ll`
 
 * Network Stuffs
   
@@ -68,6 +74,8 @@ personal information such as my name and email address.**
 
 ## quick-ref git
 
+Open help-page: `git --help command`
+
 * Init
 
   * Create a new repo     `git init`
@@ -81,18 +89,21 @@ personal information such as my name and email address.**
 
   * Check what's up       `git status`
 
-  * See what happened     `git log --graph`
+  * See what happened     `git log --graph` (`--all --pretty=oneline`)
 
   * Add files to stage    `git add filename`
 
+    * Stage part of file  `git add -p filename`
+
+    * Interactive mode:   `git add -i`
+
   * Check diff            `git diff branch1 branch2`  or `file1 file2` etc
 
-  * Check diff in log between two branches
-    "Which commits are reachable from origin/master but not origin?"
-                          `git log origin/master ^master`
+  * Commit stage to current branch `git commit`
 
-  * Commit stage to current branch
-                          `git commit`
+    * Commit all tracked files with changes: `git commit -a`
+
+    * Use interactive patch selection to decide what to commit: `git commit -p`
 
     * Note for writing commit message:
       "When applied this commit will " + Header max 50 char
@@ -100,6 +111,13 @@ personal information such as my name and email address.**
   * Undo changes          `git reset` / `git checkout`
 
   * Mark a known point    `git tag`
+  
+  * Does origin/dev have new commits? (commits not reachable from HEAD)
+      git fetch origin && git log ..origin/dev
+
+  * Show commits reachable from `<branch>` but not origin/dev
+  i.e. which changes will be introduced when I PR `branch` into origin/dev
+      git log origin/dev..<branch>
 
 * Branches
 
@@ -108,6 +126,8 @@ personal information such as my name and email address.**
   * Create branch         `git branch <branch-name>`
 
   * Switch to branch      `git checkout <branch>`
+
+  * Do both 2 above       `git checkout -b <branch name>`
 
   * Merge/rebase branch   *first checkout the to-branch* then
                           `git merge <from-branch>` or `git rebase <from-branch>`
@@ -121,7 +141,7 @@ personal information such as my name and email address.**
      pick, fixup, reorder  `git rebase -i HEAD~n`
 
     * Note: **Don't rebase commits that exist outside your local
-      repository!** (Also Force push will then be needed)
+      repository!** (Will require force-push)
 
 * Remotes
 
@@ -135,7 +155,7 @@ personal information such as my name and email address.**
 
   * Push to remote        `git push <remote> <branch>`
 
-  * Force Push to remote  `git push <remote> +<branch>`
+  * Force Push to remote  `git push <remote> --force-with-lease`
 
   * Delete remote         `git push <remote> --delete <branch>`
 
@@ -151,7 +171,7 @@ personal information such as my name and email address.**
 
 * Feature branches - make dedicated (short-lived) branches for features
 
-  * named "feature/description" e.g. "feature/add timeline"
+  * named "feature/description" e.g. "feature/add-timeline"
 
   * based on origin/master. Frequently rebase origin/master into this.
 
