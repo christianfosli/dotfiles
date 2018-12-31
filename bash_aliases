@@ -21,6 +21,8 @@ if [[ "$(uname -s)" == "Darwin" ]]; then     # Mac-only:
     alias ls='ls -G'
 elif [[ "$(uname -s)" == "MINGW64"* ]]; then # Git-bash only:
     alias see='start'
+    alias py3='winpty python'
+    alias pip='winpty pip'
 else    # Linux-only aliases (use vimx to get clipboard support)
     hash vimx 2> /dev/null && alias vim='vimx'
     alias ls='ls --color=auto'
