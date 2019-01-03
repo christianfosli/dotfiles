@@ -14,7 +14,7 @@ Feel free to copy relevant bits into your own dotfiles**
 * run the applicable script in script directory,
   or make symlinks etc manually
 
-## quick-ref bash
+## quick-ref bash / GNU tools
 
 * Exit `Ctrl-D`
 
@@ -39,8 +39,11 @@ Feel free to copy relevant bits into your own dotfiles**
 
 * Copy file contents to clipboard (on WSL) `cat $file | clip.exe`
 
-* Recursively search for "pattern" and print matching lines and
+* **GREP**: Recursively search for "pattern" and print matching lines and
   line numbers `grep -rn pattern dir`  (use `.` for `dir` for current)
+
+  * Use *extended* regular expressions such as `(), |,`
+    :grep -E "(.png$|.PNG$)" .
   
   * Exclude dir: `grep -rn --exclude-dir=node_modules pattern dir`
 
