@@ -5,8 +5,6 @@ shopt -s expand_aliases
 
 # Get some colors (Most are from default ubuntu .bashrc)
 alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -26,6 +24,7 @@ elif [[ "$(uname -s)" == "MINGW64"* ]]; then # Git-bash only:
     alias see='start'
     alias py3='winpty python'
     alias pip='winpty pip'
+    alias npm='winpty npm.cmd'
 else    # Linux-only aliases (use vimx to get clipboard support)
     hash vimx 2> /dev/null && alias vim='vimx'
     alias ls='ls --color=auto'
