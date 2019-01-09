@@ -92,7 +92,11 @@ Open help-page: `git --help command`
 
   * Check what's up       `git status`
 
-  * See what happened     `git log --graph` (`--all --pretty=oneline`)
+  * See what happened     `git log [--graph --all --date=relative]`)
+
+    * one-line commits: `git log [--graph --all] --oneline`
+
+    * visual tool: `gitk [--all]`
 
   * Add files to stage    `git add filename`
 
@@ -116,11 +120,13 @@ Open help-page: `git --help command`
   * Mark a known point    `git tag`
   
   * Does origin/dev have new commits? (commits not reachable from HEAD)
-      git fetch origin && git log ..origin/dev
+
+    `git fetch origin && git log ..origin/dev`
 
   * Show commits reachable from `<branch>` but not origin/dev
   i.e. which changes will be introduced when I PR `branch` into origin/dev
-      git log origin/dev..<branch>
+
+    `git log origin/dev..<branch>`
 
 * Branches
 
