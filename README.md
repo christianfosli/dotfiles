@@ -96,6 +96,8 @@ Open help-page: `git --help command`
 
     * one-line commits: `git log [--graph --all] --oneline`
 
+    * only show first parent for merge-commits: `git log --first-parent`
+
     * visual tool: `gitk [--all]`
 
   * Add files to stage    `git add filename`
