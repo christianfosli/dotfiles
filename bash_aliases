@@ -18,7 +18,7 @@ alias q:=fc
 # Mac / Linux / Windows (git-bash) specific
 if [[ "$(uname -s)" == "Darwin" ]]; then     # Mac-only:
     hash /usr/local/bin/vim 2> /dev/null && alias vim=/usr/local/bin/vim
-    alias see='open'
+    alias see='qlmanage -p &>/dev/null'
     alias ls='ls -G'
 elif [[ "$(uname -s)" == "MINGW64"* ]]; then # Git-bash only:
     alias see='start'
