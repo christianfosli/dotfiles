@@ -10,7 +10,10 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # Cut filenames at 20 characters and make columns:
-alias lc='ls | cut -c1-20 | column -c"${COLUMNS:-80}"'
+lc() {
+    [[ -z "$1" ]] && set -- "."
+    ls "$1" | cut -c1-20 | column -c"${COLUMNS:-80}"
+}
 
 # Fix command like in vim command line window
 alias q:=fc
