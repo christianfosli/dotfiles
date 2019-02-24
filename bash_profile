@@ -27,8 +27,13 @@ fi
 # Don't color executables on WSL (as all windows files on /mnt/c are exec)
 [[ -d /mnt/c ]] && export LS_COLORS="ex=0"
 
+
 # Automatically open ssh-agent on Git-Bash for Windows
 [[ "$(uname -s)" == "MINGW64"*  ]] && . ~/dotfiles/scripts/auto_launch_ssh-agent_windows.sh
+
+# Automatically open ssh-agent on Linux
+[[ "$(uname -s)" == "Linux"* ]] && [[ "$SSH_AUTH_SOCK" == "" ]] && eval "$(ssh-agent -s)" &&\
+ssh-add
 
 # Get the aliases and functions
 [[ -f ~/.bashrc ]] && . ~/.bashrc

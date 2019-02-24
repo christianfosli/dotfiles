@@ -41,7 +41,7 @@ done
 
 printf 'Creating symlinks from private dotfiles\n'
 
-[[ -d ~/dotfiles_private ]] || git clone https://github.com/christianfosli/dotfiles_private
+[[ -d ~/dotfiles_private ]] || git clone git@github.com:christianfosli/dotfiles_private.git
 
 for file in $private_dotfiles
 do
