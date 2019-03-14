@@ -92,13 +92,13 @@ Open help-page: `git --help command`
 
   * Check what's up       `git status`
 
-  * See what happened     `git log [--graph --all --date=relative]`)
+  * See what happened     `git log [--graph --all --date=human]`)
 
     * one-line commits: `git log [--graph --all] --oneline`
 
     * only show first parent for merge-commits: `git log --first-parent`
 
-    * visual tool: `gitk [--all]`
+    * GUI log: `gitk [--all]`
 
   * Add files to stage    `git add filename`
 
@@ -114,13 +114,13 @@ Open help-page: `git --help command`
 
     * Use interactive patch selection to decide what to commit: `git commit -p`
 
+    * Show diff below the commit message: `git commit -v`
+
     * Note for writing commit message:
       "When applied this commit will " + Header max 50 char
 
   * Undo changes          `git reset` / `git checkout`
 
-  * Mark a known point    `git tag`
-  
   * Does origin/dev have new commits? (commits not reachable from HEAD)
 
     `git fetch origin && git log ..origin/dev`
@@ -132,7 +132,7 @@ Open help-page: `git --help command`
 
 * Branches
 
-  * Show branches         `git branch` or `git branch -vv`
+  * Show branches         `git branch` or `git branch -vv` or `git branch -r`
   
   * Create branch         `git branch <branch-name>`
 
@@ -143,10 +143,12 @@ Open help-page: `git --help command`
   * Merge/rebase branch   *first checkout the to-branch* then
                           `git merge <from-branch>` or `git rebase <from-branch>`
 
-  * Delete branch         `git branch --delete <branch>`
+  * Delete branch         `git branch -d <branch>`
+                          force delete with `git branch -D <branch>`
 
   * Reset branch to earlier commit / branch / tag
                           `git reset --hard <commit>`
+
   * Clean up latest n commits
     (opens interactive rebase editor letting you squash
      pick, fixup, reorder  `git rebase -i HEAD~n`
@@ -158,13 +160,15 @@ Open help-page: `git --help command`
 
   * Fetch latest changes  `git fetch <remote>`
 
-  * Show remote info      `git remote show <remote>`
+  * Show remote info      `git remote -v` or more info with `git remote show <remote>`
 
   * Fetch and merge       `git pull`
 
   * Fetch and rebase      `git pull --rebase`
 
   * Push to remote        `git push <remote> <branch>`
+
+  * Push and add upstream (tracking) reference `git push -u <remote> <branch>`
 
   * Force Push to remote  `git push <remote> --force-with-lease`
 
