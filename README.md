@@ -119,7 +119,9 @@ Open help-page: `git --help command`
     * Note for writing commit message:
       "When applied this commit will " + Header max 50 char
 
-  * Undo changes          `git reset` / `git checkout`
+  * Undo changes          `git checkout <filename>`
+
+  * Unstage file          `git reset <filename>`
 
   * Does origin/dev have new commits? (commits not reachable from HEAD)
 
@@ -129,6 +131,13 @@ Open help-page: `git --help command`
   i.e. which changes will be introduced when I PR `branch` into origin/dev
 
     `git log origin/dev..<branch>`
+
+  * Show commit message and changes in a commit `git show --stat <commit-hash>/<branch>`
+
+  * Ignore future local changes to a tracked file (useful for config files...)
+    `git update-index --skip-worktree <filename>`
+
+    * Undo with `git update-index --no-skip-worktree <filename>`
 
 * Branches
 
