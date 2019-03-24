@@ -193,23 +193,30 @@ Open help-page: `git --help command`
 
   * Builds/runs and tests pass
 
+  * Tag commits that represent a release version `vx.y.z` (major.minor.patch)
+
 * Feature branches - make dedicated (short-lived) branches for features
 
   * named "feature/description" e.g. "feature/add-timeline"
 
   * based on origin/master. Frequently rebase origin/master into this.
 
-  * merge into master when all ok
+  * merge into master when complete (typically via PR)
 
-* Release branches - Fork of master branch
+### Git Flow
 
-  * named "release/x.y.z" (major.minor.patch)
+* Master branch: Represents code in prod
 
-  * the commit that represents a release should be tagged "x.y.z"
+* Develop branch: Updated with latest features and fixes!
 
-  * if bugs preferably fix on master then cherry-pick to release branch,
-    alternatively fix on release branch and open ticket for properly
-    fixing on master
+* Feature branch: Branched from dev. Merged back to dev once done
+  (typically via a PR)
+
+* Release branch: Branched from dev. Test. Branch to master AND dev when
+  ready for prod, and tag the commit on master `vx.y`.
+
+* Hotfix branch: Important bug found in prod. Branched from master.
+  Once fixed, merge into both master and dev.
 
 ## quick-ref tmux
 
