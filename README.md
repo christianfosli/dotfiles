@@ -169,6 +169,9 @@ Open help-page: `git --help command`
 
   * Fetch latest changes  `git fetch <remote>`
 
+    * And remove remote remote tracking branches which have been deleted
+    `git fetch -p <remote>` (shows [gone] on `git branch -v`)
+
   * Show remote info      `git remote -v` or more info with `git remote show <remote>`
 
   * Fetch and merge       `git pull`
