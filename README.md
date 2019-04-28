@@ -92,11 +92,12 @@ Open help-page: `git --help command`
 
   * Check what's up       `git status`
 
-  * See what happened     `git log [--graph --all --date=human]`)
+  * See what happened     `git log [--graph --all --date=human --stat]`)
 
     * one-line commits: `git log [--graph --all] --oneline`
 
-    * only show first parent for merge-commits: `git log --first-parent`
+    * only show first parent for merge-commits:
+      `git log --first-parent [-m --stat]`
 
     * GUI log: `gitk [--all]`
 
