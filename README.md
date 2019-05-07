@@ -25,9 +25,15 @@ Feel free to copy relevant bits into your own dotfiles**
 * Resume job `fg`  (list all with `jobs`)
 
 * Readline (emacs-style shortcuts):
+
   * Go to beginning of line `Ctrl-a`
+
   * Go to end of line `Ctrl-e`
+
   * Delete line `Ctrl-x <Backspace>`
+
+  * Move by words `Ctrl- <Arrow-Keys>`
+
   * Open command in $EDITOR, execute upon exit `Ctrl-x Ctrl-e` or `fc`
 
 * Very basics:: moving files/folders `mv source dest`, copying
@@ -55,6 +61,8 @@ Feel free to copy relevant bits into your own dotfiles**
   (usually aliased to `ll`
 
 * Network Stuffs
+
+  (mostly just tested on Fedora Linux)
   
   * List ip-address `ip addr`
   
@@ -62,7 +70,7 @@ Feel free to copy relevant bits into your own dotfiles**
 
   * Check hostname for ip in local network: `nmblookup -A <ip>`
 
-  * SSH `ssh username@ip`
+  * SSH `ssh username@ip -p portnumber`
 
     * Start ssh service to allow log-ins (fedora) `systemctl start sshd.service`
 
@@ -71,9 +79,6 @@ Feel free to copy relevant bits into your own dotfiles**
 
   * Check wifi devices, connect to wifi networks etc 
     `nmcli radio ...`, `nmcli device wifi...`, `nmcli connection ...`
-
-* quick commandline calculator: *bc* (reads from filename or stdin) ex:
-  `printf "5*10\n" | bc`
 
 ## quick-ref git
 
@@ -104,8 +109,6 @@ Open help-page: `git --help command`
   * Add files to stage    `git add filename`
 
     * Stage part of file  `git add -p filename`
-
-    * Interactive mode:   `git add -i`
 
   * Check diff            `git diff branch1 branch2`  or `file1 file2` etc
 
@@ -179,17 +182,15 @@ Open help-page: `git --help command`
 
   * Fetch and rebase      `git pull --rebase`
 
-  * Push to remote        `git push <remote> <branch>`
+  * Push to remote        `git push <remote> <branch> [--force-with-lease]`
 
   * Push and add upstream (tracking) reference `git push -u <remote> <branch>`
 
-  * Force Push to remote  `git push <remote> --force-with-lease`
-
-  * Delete remote         `git push <remote> --delete <branch>`
+  * Delete remote         `git push <remote> -d <branch>`
 
   * Update submodules     `git submodule update` or `git submodule update --remote`
 
-### Nice branch model * *
+### Nice branch model for smaller/personal projects * *
 
 [Ref](http://www.bitsnbites.eu/a-stable-mainline-branching-model-for-git)
 
@@ -231,6 +232,8 @@ Open help-page: `git --help command`
 * rename window `Ctrl-b ,`
 
 * new pane `Ctrl-b "` or `Ctrl-b %`
+
+* move pane to a new window `Ctrl-b !`
 
 * toggle layouts `Ctrl-b <space>`
 
