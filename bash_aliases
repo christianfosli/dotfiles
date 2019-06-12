@@ -18,9 +18,11 @@ lc() {
 # Fix command like in vim command line window
 alias q:=fc
 
+# Alias vi to nvim
+alias vi='nvim'
+
 # Mac / Linux / Windows (git-bash) specific
 if [[ "$(uname -s)" == "Darwin" ]]; then     # Mac-only:
-    hash /usr/local/bin/vim 2> /dev/null && alias vim=/usr/local/bin/vim
     alias see='qlmanage -p &>/dev/null'
     alias ls='ls -G'
 elif [[ "$(uname -s)" == "MINGW64"* ]]; then # Git-bash only:
@@ -28,8 +30,7 @@ elif [[ "$(uname -s)" == "MINGW64"* ]]; then # Git-bash only:
     alias py3='winpty python'
     alias pip='winpty pip'
     alias npm='winpty npm.cmd'
-else    # Linux-only aliases (use vimx to get clipboard support)
-    hash vimx 2> /dev/null && alias vim='vimx'
+else    # Linux-only aliases
     alias ls='ls --color=auto'
     alias ip='ip --color'
     alias cal='ncal -bMw'
