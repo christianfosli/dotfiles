@@ -55,6 +55,10 @@ Feel free to copy relevant bits into your own dotfiles**
 
   * Exclude `.gitignore`: `git grep -n pattern dir`
 
+* Find files by filename: `find . -name "pattern"` or
+ `find . -name node_modules -prune -o -name tmux* -print`
+ ( if we find node\_modules, stop dont look inside => TRUE  OR   if name tmux* print it. )
+
 * Create symlink `ln -s actual_file_path symlink_path`
 
 * List all files in long format (with permissions and stuff) `ls -la`
@@ -122,6 +126,16 @@ Open help-page: `git --help command`
 
     * Note for writing commit message:
       "When applied this commit will " + Header max 50 char
+
+      * Commit message trailers:
+
+        - Closes: #Bugnumber
+
+        - Related-Bug: #Bugnumber
+
+        - Co-Authered-by: Name <email>
+
+        - Related work items: #tasknumber     (az dev ops)
 
   * Undo changes          `git checkout <filename>`
 
