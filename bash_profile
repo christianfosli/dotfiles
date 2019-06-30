@@ -35,6 +35,9 @@ fi
 [[ "$(uname -s)" == "Linux"* ]] && [[ "$SSH_AUTH_SOCK" == "" ]] && eval "$(ssh-agent -s)" &&\
 ssh-add
 
+# Let GPG know we dont have a GUI
+export GPG_TTY=$(tty)
+
 # Get the aliases and functions
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
