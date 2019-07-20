@@ -2,3 +2,6 @@ $include /etc/inputrc
 
 # Proper completion for symlinked directories
 set mark-symlinked-directories on
+
+# Case insensitive completion
+set completion-ignore-case on
