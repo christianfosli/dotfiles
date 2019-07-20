@@ -45,6 +45,8 @@ Feel free to copy relevant bits into your own dotfiles**
 
 * Copy file contents to clipboard (on WSL) `cat $file | clip.exe`
 
+* Search command history: `<C-r> startOfCommand`
+
 * **GREP**: Recursively search for "pattern" and print matching lines and
   line numbers `grep -rn pattern dir`  (use `.` for `dir` for current)
 
