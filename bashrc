@@ -12,6 +12,9 @@ elif [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
     source /usr/local/etc/bash_completion.d/git-prompt.sh 
 fi
 
+# Source script to enable bash completion for github hub
+[[ -f /usr/local/bin/hub.bash_completion.sh ]] && . /usr/local/bin/hub.bash_completion.sh
+
 # Bash prompt, based on fedora default, but with color and git branch!
 # note non-printing parts are escaped inside \[ ... \] to make length known
 PS1='\[\e[0;32m\][\W\[\e[0;36m\]$(__git_ps1 2>/dev/null " %s")\
@@ -29,4 +32,9 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # Open tmux if its installed and no tmux sessions exist
 if hash tmux 2> /dev/null; then
     tmux ls &> /dev/null || tmux
+fi
+
+# Adding wsl-open as a browser for Bash for Windows
+if [[ $(uname -r) == *Microsoft ]]; then
+  export BROWSER=wsl-open
 fi
