@@ -1,2 +1,4 @@
 scripts/sync.log
 scripts/last_synced
+hub
+nvim/.netrwhist

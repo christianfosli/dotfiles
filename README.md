@@ -9,7 +9,7 @@ Feel free to copy relevant bits into your own dotfiles**
 
 ## set up
 
-* clone repo, for example into $HOME
+* clone repo into $HOME/.config
 
 * run the applicable script in script directory,
   or make symlinks etc manually
