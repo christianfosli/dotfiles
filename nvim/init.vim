@@ -25,9 +25,9 @@ set spelllang=en,nb
 
 " Generate .spl binary file if this file is outdated or doesn't exist
 if (has('unix'))
-        let g:spellAdd = $HOME . '/.vim/spell/en.utf-8.add'
+        let g:spellAdd = $HOME . '/.config/nvim/spell/en.utf-8.add'
 elseif has('win32')
-        let g:spellAdd = $HOME . '/vimfiles/spell/en.utf-8.add'
+        let g:spellAdd = $HOME . '/AppData/Local/nvim/spell/en.utf-8.add'
 endif
 if (! filereadable(g:spellAdd . '.spl')
             \|| getftime(g:spellAdd) > getftime(g:spellAdd . '.spl'))
