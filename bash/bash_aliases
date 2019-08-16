@@ -3,11 +3,8 @@
 # author: Christian Fosli <cfosli@gmail.com>
 shopt -s expand_aliases
 
-# Get some colors (Most are from default ubuntu .bashrc)
+# Get some colors
 alias grep='grep --color=auto'
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
 
 # Cut filenames at 20 characters and make columns:
 lc() {
@@ -36,6 +33,3 @@ else    # Linux-only aliases
     alias cal='ncal -bMw'
     hash see 2> /dev/null || alias see='xdg-open'
 fi
-
-# Script to sync onedrive and google drive
-alias syncpls='~/dotfiles/scripts/sync.sh'
