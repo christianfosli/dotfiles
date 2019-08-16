@@ -10,10 +10,8 @@ done
 export PATH
 
 # Set vim to default editor
-if hash vimx 2> /dev/null; then # Use vimx if we have it
-    export VISUAL=vimx
-elif -f /usr/local/bin/vim 2> /dev/null; then # Use homebrew-vim on Mac OS
-    export VISUAL=/usr/local/bin/vim
+if hash nvim 2> /dev/null; then # Use nvim if we have it
+    export VISUAL=nvim
 else
     export VISUAL=vim
 fi
@@ -37,6 +35,11 @@ ssh-add
 
 # Let GPG know we dont have a GUI
 export GPG_TTY=$(tty)
+
+# WSL Bash on Windows doesnt apply umask correctly
+if [[ "$(umask)" == "0000" ]]; then
+    umask 022
+fi
 
 # Get the aliases and functions
 [[ -f ~/.bashrc ]] && . ~/.bashrc
