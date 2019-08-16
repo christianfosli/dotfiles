@@ -3,3 +3,4 @@ scripts/last_synced
 hub
 nvim/.netrwhist
 nvim/spell/*.spl
+nvim/spell/*.sug
