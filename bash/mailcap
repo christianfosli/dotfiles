@@ -1,0 +1,6 @@
+application/pdf; wsl-open '%s'
+image/jpeg; wsl-open '%s'
+image/png; wsl-open '%s'
+text/html; wsl-open '%s'
+inode/directory; wsl-open '%s'
+application/vnd.ms-excel; wsl-open '%s'

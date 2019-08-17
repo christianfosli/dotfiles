@@ -14,6 +14,9 @@ Feel free to copy relevant bits into your own dotfiles**
 * run the applicable script in script directory,
   or make symlinks etc manually
 
+* The `mailcap` file is useful on WSL. It requires
+  [wsl-open](https://github.com/4U6U57/wsl-open)
+
 ## quick-ref bash / GNU tools
 
 * Exit `Ctrl-D`
