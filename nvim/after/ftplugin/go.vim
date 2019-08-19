@@ -4,6 +4,9 @@
 setlocal noexpandtab
 setlocal tabstop=4
 
+" Enable coc.nvim
+packadd coc.nvim-release
+
 " Format on save
 augroup goAuto
     autocmd!
