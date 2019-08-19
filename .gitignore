@@ -4,3 +4,7 @@ hub
 nvim/.netrwhist
 nvim/spell/*.spl
 nvim/spell/*.sug
+coc/history.json
+coc/mru
+coc/extensions/*
+!coc/extensions/package.json

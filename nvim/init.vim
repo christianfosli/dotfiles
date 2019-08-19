@@ -6,6 +6,7 @@ set ignorecase  	" Case insensitive search
 set smartcase		"  - except when searching with upper-case characters
 set autowrite		" Automatically write before :make, :!, :bn, etc
 set laststatus=1	" Show statusline only when there are at least 2 windows
+set hidden
 let g:mapleader=' '	" Use <space> as leader key
 
 " Colors - use default colorscheme but make comments gray
@@ -54,3 +55,24 @@ endif
 nnoremap <buffer> <leader>r :! see %<cr>
 " Build in bottom tmux pane (Override in after/ftplugin)
 nnoremap <buffer> <leader>b :! tmux send-keys -t bottom "make" Enter<cr><cr>
+
+" Coc.nvim wants this
+set nobackup
+set nowritebackup
+set updatetime=300
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
