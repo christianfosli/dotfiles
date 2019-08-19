@@ -30,6 +30,6 @@ elif [[ "$(uname -s)" == "MINGW64"* ]]; then # Git-bash only:
 else    # Linux-only aliases
     alias ls='ls --color=auto'
     alias ip='ip --color'
-    alias cal='ncal -bMw'
+    hash ncal 2> /dev/null && alias cal='ncal -bMw' || alias cal='cal -w --monday'
     hash see 2> /dev/null || alias see='xdg-open'
 fi
