@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "prettier": "^1.18.2",
+    "tslint": "^5.20.0",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.6.3",
     "wsl-open": "^1.1.0"
   }
 }
