@@ -38,3 +38,7 @@ fi
 if [[ $(uname -r) == *Microsoft ]]; then
   export BROWSER=wsl-open
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/cfosli/.sdkman"
+[[ -s "/home/cfosli/.sdkman/bin/sdkman-init.sh" ]] && source "/home/cfosli/.sdkman/bin/sdkman-init.sh"
