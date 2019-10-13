@@ -1,7 +1,7 @@
 # .bash_profile
 
 # Add applicable dirs to path (if they are not there already and they exist)
-pathdirs="$HOME/.local/bin /usr/local/bin $HOME/bin $HOME/Library/Python/3.6/bin"
+pathdirs="$HOME/.local/bin /usr/local/bin $HOME/bin $HOME/.yarn/bin $HOME/go/bin/"
 for p in $pathdirs; do
     if [[ $PATH != *:$p:* && -d $p ]]; then
         PATH=$PATH:$p
@@ -22,13 +22,6 @@ if [[ "$(uname -s)" == "Darwin"  ]]; then
     export LSCOLORS='Exgxcxdxbxegedabagacad'
 fi
 
-# Automatically open ssh-agent on Git-Bash for Windows
-[[ "$(uname -s)" == "MINGW64"*  ]] && . ~/dotfiles/scripts/auto_launch_ssh-agent_windows.sh
-
-# Automatically open ssh-agent on Linux
-[[ "$(uname -s)" == "Linux"* ]] && [[ "$SSH_AUTH_SOCK" == "" ]] && eval "$(ssh-agent -s)" &&\
-ssh-add
-
 # Let GPG know we dont have a GUI
 export GPG_TTY=$(tty)
 
@@ -39,4 +32,3 @@ fi
 
 # Get the aliases and functions
 [[ -f ~/.bashrc ]] && . ~/.bashrc
-
