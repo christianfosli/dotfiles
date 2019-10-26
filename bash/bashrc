@@ -34,16 +34,8 @@ if [[ $(uname -r) == *Microsoft ]]; then
   export BROWSER=wsl-open
 fi
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/cfosli/.sdkman"
-[[ -s "/home/cfosli/.sdkman/bin/sdkman-init.sh" ]] && source "/home/cfosli/.sdkman/bin/sdkman-init.sh"
-
-# Automatically open ssh-agent on Git-Bash for Windows
-[[ "$(uname -s)" == "MINGW64"*  ]] && . ~/dotfiles/scripts/auto_launch_ssh-agent_windows.sh
-
-# Automatically open ssh-agent on Linux
-[[ "$(uname -s)" == "Linux"* ]] && [[ "$SSH_AUTH_SOCK" == "" ]] && eval "$(ssh-agent -s)" &&\
-ssh-add
+# Stop here if we haven't read bash profile
+[[ $BASH_PROFILE_READ -eq 1 ]] || { printf "Warning: .bash_profile is not sourced\n"; return 1; }
 
 # Open tmux if its installed and no tmux sessions exist
 if hash tmux 2> /dev/null; then
