@@ -142,7 +142,7 @@ Open help-page: `git --help command`
 
         - Related work items: #tasknumber     (az dev ops)
 
-  * Undo changes          `git checkout <filename>`
+  * Undo changes          `git restore <filename>`
 
   * Unstage file          `git reset <filename>`
 
@@ -168,9 +168,9 @@ Open help-page: `git --help command`
   
   * Create branch         `git branch <branch-name>`
 
-  * Switch to branch      `git checkout <branch>`
+  * Switch to branch      `git switch <branch>`
 
-  * Do both 2 above       `git checkout -b <branch name>`
+  * Do both 2 above       `git switch -c <branch name>`
 
   * Merge/rebase branch   *first checkout the to-branch* then
                           `git merge <from-branch>` or `git rebase <from-branch>`
