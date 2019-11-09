@@ -20,6 +20,9 @@ else
 fi
 export EDITOR=$VISUAL
 
+# Enable bash completion for git
+[[ -f ~/.git-completion.bash ]] && . ~/.git-completion.bash || printf 'couldnt set up git-completion\n'
+
 # Get better ls colors on Mac OS
 if [[ "$(uname -s)" == "Darwin"  ]]; then
     export LSCOLORS='Exgxcxdxbxegedabagacad'
