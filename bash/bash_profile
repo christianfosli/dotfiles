@@ -52,3 +52,5 @@ ssh-add
 
 # Get the aliases and functions
 [[ -f ~/.bashrc ]] && . ~/.bashrc
+
+export PATH="$HOME/.cargo/bin:$PATH"
