@@ -45,6 +45,19 @@ endif
 nmap <silent> <leader>y <Plug>WslCopy
 xmap <silent> <leader>y <Plug>WslCopy
 
+" Format with prettier
+augroup format_ts
+	autocmd!
+        autocmd FileType typescript,typescriptreact
+	\ setlocal formatprg=prettier\ --parser\ typescript
+augroup END
+
+augroup format_js
+	autocmd!
+	autocmd FileType javascript,javascriptreact
+	\ setlocal formatprg=prettier\ --parser\ babel-flow
+augroup END
+
 " Make (Set makeprg in after/ftplugin)
 if findfile('Makefile') ==# 'Makefile' || findfile('gradlew') ==# 'gradlew'
         nnoremap <buffer> <leader>m :silent !clear<cr>:make!<cr>
