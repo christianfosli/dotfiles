@@ -18,6 +18,11 @@ alias q:=fc
 # Alias vi to nvim
 alias vi='nvim'
 
+# Print weather to the console
+function weather() {
+    curl "wttr.in/$1"
+}
+
 # Mac / Linux / Windows (git-bash) specific
 if [[ "$(uname -s)" == "Darwin" ]]; then     # Mac-only:
     alias see='qlmanage -p &>/dev/null'
