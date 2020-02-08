@@ -31,6 +31,9 @@ fi
 # Let GPG know we dont have a GUI
 export GPG_TTY=$(tty)
 
+# FZF in a tmux pane
+export FZF_TMUX=1
+
 #SDKMAN wants this TO WORK!!!
 export SDKMAN_DIR="/home/cfosli/.sdkman"
 [[ -s "/home/cfosli/.sdkman/bin/sdkman-init.sh" ]] && source "/home/cfosli/.sdkman/bin/sdkman-init.sh"

@@ -56,6 +56,9 @@ nnoremap <buffer> <leader>r :! see %<cr>
 " Build in bottom tmux pane (Override in after/ftplugin)
 nnoremap <buffer> <leader>b :! tmux send-keys -t bottom "make" Enter<cr><cr>
 
+" Add FZF vim plugin
+set runtimepath+=/usr/bin/fzf
+
 " Coc.nvim wants this
 set nobackup
 set nowritebackup

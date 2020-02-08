@@ -34,6 +34,9 @@ if [[ $(uname -r) == *Microsoft ]]; then
   export BROWSER=wsl-open
 fi
 
+# Enable fzf keybindings
+. /usr/share/fzf/shell/key-bindings.bash
+
 # Stop here if we haven't read bash profile
 [[ $BASH_PROFILE_READ -eq 1 ]] || { printf "Warning: .bash_profile is not sourced\n"; return 1; }
 
