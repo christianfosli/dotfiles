@@ -15,11 +15,6 @@ highlight comment ctermfg=gray
 " Auto-close {<cr>
 inoremap {<cr> {<cr>}<C-c>O
 
-" Use 4-spaces instead of tab (for tab char use <C-V><tab>)
-setlocal softtabstop=4
-setlocal shiftwidth=4
-setlocal expandtab
-
 " Spell checker
 nnoremap <leader>s :setlocal spell!<cr>
 set spelllang=en,nb
@@ -38,10 +33,7 @@ endif
 " Read aliases when running shell commands
 let $BASH_ENV = '~/.bash_aliases'
 
-" Copy to clipboard for WSL!
-if has('unix') && executable('clip.exe')
-        packadd! wsl-copy
-endif
+" Copy to clipboard for WSL
 nmap <silent> <leader>y <Plug>WslCopy
 xmap <silent> <leader>y <Plug>WslCopy
 
@@ -71,10 +63,3 @@ nnoremap <buffer> <leader>b :! tmux send-keys -t bottom "make" Enter<cr><cr>
 
 " Add FZF vim plugin
 set runtimepath+=/usr/bin/fzf
-
-" Coc.nvim wants this
-set nobackup
-set nowritebackup
-set updatetime=300
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
