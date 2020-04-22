@@ -1,7 +1,7 @@
 # dotfiles 
 
 I use this repo to backup and keep in sync my bash/git/tmux ++
-config files.
+config files. I'm mostly using WSL these days.
 
 **I advise against using these dotfiles directly.
 Some commands may only work specifically on my set-up or in my workflow.
@@ -177,6 +177,8 @@ Open help-page: `git --help command`
 
   * Delete branch         `git branch -d <branch>`
                           force delete with `git branch -D <branch>`
+
+  * Delete every branch except master `git branch | grep -v "master" | xargs git branch -D`
 
   * Reset branch to earlier commit / branch / tag
                           `git reset --hard <commit>`
