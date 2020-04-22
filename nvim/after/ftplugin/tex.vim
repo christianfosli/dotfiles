@@ -1,5 +1,8 @@
 " Tex specific cmds! Extends built in /ftplugin/tex.vim
 
+" set tex flavor to latex
+let g:tex_flavor = 'latex'
+
 " Turn on spellcheck:
 setlocal spell
 

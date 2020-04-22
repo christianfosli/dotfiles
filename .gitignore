@@ -1,6 +1,7 @@
 scripts/sync.log
 scripts/last_synced
 hub
+gh
 nvim/.netrwhist
 nvim/spell/*.spl
 nvim/spell/*.sug

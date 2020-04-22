@@ -2,12 +2,13 @@
 " Maintainer: Christian Fosli <cfosli@gmail.com>
 
 " General
-set ignorecase  	" Case insensitive search
-set smartcase		"  - except when searching with upper-case characters
-set autowrite		" Automatically write before :make, :!, :bn, etc
-set laststatus=1	" Show statusline only when there are at least 2 windows
+set ignorecase  	 " Case insensitive search
+set smartcase		 "  - except when searching with upper-case characters
+set autowrite		 " Automatically write before :make, :!, :bn, etc
+set laststatus=1	 " Show statusline only when there are at least 2 windows
 set hidden
-let g:mapleader=' '	" Use <space> as leader key
+let g:mapleader=' '	 " Use <space> as leader key
+let g:maplocalleader=' ' " Use <space> key as leader key
 
 " Colors - use default colorscheme but make comments gray
 highlight comment ctermfg=gray
