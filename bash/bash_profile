@@ -7,7 +7,7 @@ export BASH_PROFILE_READ=1
 pathdirs="$HOME/.local/bin /usr/local/bin $HOME/bin $HOME/.yarn/bin $HOME/go/bin/"
 for p in $pathdirs; do
     if [[ $PATH != *:$p:* && -d $p ]]; then
-        PATH=$PATH:$p
+        PATH=$p:$PATH
     fi
 done
 export PATH
@@ -42,6 +42,10 @@ export SDKMAN_DIR="/home/cfosli/.sdkman"
 if [[ "$(umask)" == "0000" ]]; then
     umask 022
 fi
+
+# Windows Docker Desktop exposes docker deamon on localhost:2375
+# by setting this env variable, we can connect to it from docker's CLI on WSL
+export DOCKER_HOST=localhost:2375
 
 # Automatically open ssh-agent on Git-Bash for Windows
 [[ "$(uname -s)" == "MINGW64"*  ]] && . ~/dotfiles/scripts/auto_launch_ssh-agent_windows.sh
