@@ -121,6 +121,21 @@ Open help-page: `git --help command`
 
   * Check diff            `git diff branch1 branch2`  or `file1 file2` etc
 
+    * Check message and diff of commit: `git show <commit-hash>`
+
+    * Check diff of a merge commit:
+
+      * Given this commit:
+      ```patch
+      commit ccc333
+      Merge: aaa111 bbb222 
+      ```
+
+      ```console
+      git diff aaa111...bbb222
+      ```
+  * Show commit message and changes in a commit `git show --stat <commit-hash>/<branch>`
+
   * Commit stage to current branch `git commit`
 
     * Commit all tracked files with changes: `git commit -a`
@@ -135,6 +150,8 @@ Open help-page: `git --help command`
       * Commit message trailers:
 
         - Closes: #Bugnumber
+
+        - Fixes: #Bugnumber
 
         - Related-Bug: #Bugnumber
 
@@ -154,8 +171,6 @@ Open help-page: `git --help command`
   i.e. which changes will be introduced when I PR `branch` into origin/dev
 
     `git log origin/dev..<branch>`
-
-  * Show commit message and changes in a commit `git show --stat <commit-hash>/<branch>`
 
   * Ignore future local changes to a tracked file (useful for config files...)
     `git update-index --skip-worktree <filename>`
