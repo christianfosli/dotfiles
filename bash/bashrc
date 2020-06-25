@@ -5,16 +5,6 @@
 
 # User specific aliases and functions
 
-# Source git-prompt.sh to enable it for bash prompt
-if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
-    source /usr/share/git-core/contrib/completion/git-prompt.sh
-elif [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
-    source /usr/local/etc/bash_completion.d/git-prompt.sh 
-fi
-
-# Source script to enable bash completion for github hub
-[[ -f /usr/local/bin/hub.bash_completion.sh ]] && . /usr/local/bin/hub.bash_completion.sh
-
 # Bash prompt, based on fedora default, but with color and git branch!
 # note non-printing parts are escaped inside \[ ... \] to make length known
 PS1='\[\e[0;32m\][\W\[\e[0;36m\]$(__git_ps1 2>/dev/null " %s")\
@@ -29,13 +19,15 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # Alias definitions
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 
-# Adding wsl-open as a browser for Bash for Windows
-if [[ $(uname -r) == *Microsoft ]]; then
-  export BROWSER=wsl-open
-fi
+# FZF keybindings
+[[ -f /usr/share/fzf/shell/keybindings.bash ]] && . /usr/share/fzf/shell/key-bindings.bash
 
-# Enable fzf keybindings
-. /usr/share/fzf/shell/key-bindings.bash
+# Open files with default windows app on WSL
+if hash pwsh.exe 2> /dev/null; then
+    function wsl-open {
+        local windowspath="$(wslpath -w $@)" && pwsh.exe -c "start $windowspath";
+    }
+fi
 
 # Stop here if we haven't read bash profile
 [[ $BASH_PROFILE_READ -eq 1 ]] || { printf "Warning: .bash_profile is not sourced\n"; return 1; }

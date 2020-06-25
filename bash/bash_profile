@@ -20,9 +20,6 @@ else
 fi
 export EDITOR=$VISUAL
 
-# Enable bash completion for git
-[[ -f ~/.git-completion.bash ]] && . ~/.git-completion.bash || printf 'couldnt set up git-completion\n'
-
 # Get better ls colors on Mac OS
 if [[ "$(uname -s)" == "Darwin"  ]]; then
     export LSCOLORS='Exgxcxdxbxegedabagacad'
@@ -33,15 +30,6 @@ export GPG_TTY=$(tty)
 
 # FZF in a tmux pane
 export FZF_TMUX=1
-
-#SDKMAN wants this TO WORK!!!
-export SDKMAN_DIR="/home/cfosli/.sdkman"
-[[ -s "/home/cfosli/.sdkman/bin/sdkman-init.sh" ]] && source "/home/cfosli/.sdkman/bin/sdkman-init.sh"
-
-# WSL Bash on Windows doesnt apply umask correctly
-if [[ "$(umask)" == "0000" ]]; then
-    umask 022
-fi
 
 # Windows Docker Desktop exposes docker deamon on localhost:2375
 # by setting this env variable, we can connect to it from docker's CLI on WSL
