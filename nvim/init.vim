@@ -64,3 +64,7 @@ nnoremap <buffer> <leader>b :! tmux send-keys -t bottom "make" Enter<cr><cr>
 
 " Add FZF vim plugin
 set runtimepath+=/usr/bin/fzf
+
+" Fix stuck cursor in Windows Terminal
+au VimLeave * set guicursor=a:ver25
+
