@@ -10,6 +10,10 @@
 PS1='\[\e[0;32m\][\W\[\e[0;36m\]$(__git_ps1 2>/dev/null " %s")\
 \[\e[0;32m\]]\[\e[m\] \$ '
 
+# The git prompt script must be sourced in order for git branch to show in PS1
+git_prompt_path='/usr/share/git-core/contrib/completion/git-prompt.sh'
+[[ -f $git_prompt_path ]] && . $git_prompt_path || printf 'git prompt failed or not found\n'
+
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 
@@ -28,6 +32,9 @@ if hash pwsh.exe 2> /dev/null; then
         local windowspath="$(wslpath -w $@)" && pwsh.exe -c "start $windowspath";
     }
 fi
+
+# Fun ES logs fn
+[[ -f ~/.config/scripts/log-es.bash ]] && . ~/.config/scripts/log-es.bash
 
 # Stop here if we haven't read bash profile
 [[ $BASH_PROFILE_READ -eq 1 ]] || { printf "Warning: .bash_profile is not sourced\n"; return 1; }

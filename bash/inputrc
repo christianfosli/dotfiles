@@ -1,7 +1,7 @@
 $include /etc/inputrc
 
-# Proper completion for symlinked directories
+set bell-style none
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
 set mark-symlinked-directories on
-
-# Case insensitive completion
 set completion-ignore-case on
