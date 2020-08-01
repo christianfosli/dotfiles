@@ -1,44 +1,37 @@
 #!/bin/bash
 
+# This includes CLI tools I use frequently
+# Tools to install manually when applicable:
+# docker, rust, texlive, etc
+
 # Set variables
-pkgs='cowsay java-openjdk-devel nodejs npm pandoc python3 python3-devel python3-pip rclone screenfetch tmux texlive xdg-tools'
+pkgs='skim neovim git curl'
 gui_pkgs='chromium gnome-tweaks'
 gui=0 # make 0 if no gui
-wsl=1 # make 1 of on wsl
-pkgManager='apt'
 
-echo 'WARNING: Please ensure variables are properly set in script file'
-echo 'If not cancel script with Ctrl-C and edit script file'
-printf 'Current values: GUI=%d, WSL=%d, pkgManager=%s\n' $gui $wsl $pkgManager
-sleep 5s
+if hash apt; then
+    install_cmd='apt install -y'
+else if hash dnf; then
+    install_cmd='dnf install -y'
+else if hash apk; then
+    install_cmd='apk add'
+else
+    echo "ERR: could not determine package manager" && exit 1
+fi
 
 # Install non-gui apps
-echo 'installing applicables from your package manager - will need password'
+printf '\n\ninstalling packages\n\n'
 for pkg in $pkgs; do
-	sudo $pkgManager install -y $pkg
+    printf "installing $pkg\n"
+    $install_cmd $pkg \
+        || (echo "ERR: Failed on install $pkg" && exit 1)
 done
 
 # Install gui apps
 if [[ $gui -eq 1 ]]; then
-    echo 'installing gui apps'
+    printf '\n\ninstalling gui apps\n\n'
     for gui_pkg in $gui_pkgs; do
-        sudo $pkgManager install -y $gui_pkg
+        sudo $pkgManager install -y $gui_pkg \
+            || (echo "ERR: Failed to install $pkg" && exit 1)
     done
 fi
-
-# Install applicable stuffs from pip3
-echo 'installing applicables from pip'
-pip3 install --user python-language-server[all]
-
-# Install applicable stuff from NPM
-if [[ $wsl -eq 1 ]]; then
-    echo 'installing wsl-open'
-    sudo npm install -g wsl-open
-fi
-
-# Fix java version (requires used input)
-# ref https://fedoraproject.org/wiki/Java switching java versions is done
-# using the alternatives system
-echo 'if there are installed several java versions u need to specify'
-echo 'which one to use. Opening `alternatives --config java` '
-alternatives --config java

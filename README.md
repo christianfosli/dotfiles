@@ -39,11 +39,6 @@ Feel free to copy relevant bits into your own dotfiles**
 
   * Open command in $EDITOR, execute upon exit `Ctrl-x Ctrl-e` or `fc`
 
-* Very basics:: moving files/folders `mv source dest`, copying
-  files/folders `cp source dest`, change directory `cd $dir`
-  cd up `cd ..` cd previous `cd -`, print file to stdout
-  `cat $file`, view file nicely `less $file`, manuals `man $cmd`
-
 * Push/Pop directories to stack `pushd $dir` then later `popd`
 
 * Copy file contents to clipboard (on WSL) `cat $file | clip.exe`
@@ -63,6 +58,8 @@ Feel free to copy relevant bits into your own dotfiles**
 * Find files by filename: `find . -name "pattern"` or
  `find . -name node_modules -prune -o -name tmux* -print`
  ( if we find node\_modules, stop dont look inside => TRUE  OR   if name tmux* print it. )
+
+ * Or use a fuzzy finder like FZF or [skim](https://github.com/lotabout/skim)
 
 * Create symlink `ln -s actual_file_path symlink_path`
 
