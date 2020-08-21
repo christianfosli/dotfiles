@@ -38,5 +38,13 @@ export GPG_TTY=$(tty)
 [[ "$(uname -s)" == "Linux"* ]] && [[ "$SSH_AUTH_SOCK" == "" ]] && eval "$(ssh-agent -s)" &&\
 ssh-add
 
+# Enable using $APPDATA from windows as bind-volume with docker
+if hash pwsh.exe 2> /dev/null; then
+    export APPDATA=$(wslpath $(pwsh.exe -c 'echo $env:APPDATA'))
+fi
+
+# Work-around for XDG_CONFIG_HOME for readline
+export INPUTRC="$HOME/.config/readline/inputrc"
+
 # Get the aliases and functions
 [[ -f ~/.bashrc ]] && . ~/.bashrc

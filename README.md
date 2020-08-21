@@ -11,8 +11,8 @@ Feel free to copy relevant bits into your own dotfiles**
 
 * clone repo into $HOME/.config
 
-* run the applicable script in script directory,
-  or make symlinks etc manually
+* Symlink the bash config files. Most of the other dotfiles should work by
+  themselves due to [XDG base directory](https://wiki.archlinux.org/index.php/XDG_Base_Directory)
 
 * The `mailcap` file is useful on WSL. It requires
   [wsl-open](https://github.com/4U6U57/wsl-open)
