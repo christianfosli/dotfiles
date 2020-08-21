@@ -11,9 +11,9 @@ gui=0 # make 0 if no gui
 
 if hash apt; then
     install_cmd='apt install -y'
-else if hash dnf; then
+elif hash dnf; then
     install_cmd='dnf install -y'
-else if hash apk; then
+elif hash apk; then
     install_cmd='apk add'
 else
     echo "ERR: could not determine package manager" && exit 1

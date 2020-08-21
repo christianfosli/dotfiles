@@ -7,8 +7,8 @@
 
 # Bash prompt, based on fedora default, but with color and git branch!
 # note non-printing parts are escaped inside \[ ... \] to make length known
-PS1='\[\e[0;32m\][\W\[\e[0;36m\]$(__git_ps1 2>/dev/null " %s")\
-\[\e[0;32m\]]\[\e[m\] \$ '
+PS1='\[\e[0;32m\][\u \W]\[\e[0;36m\]$(__git_ps1 2>/dev/null " %s🌿")\
+\[\e[0;32m\]\[\e[m\] \$ '
 
 # The git prompt script must be sourced in order for git branch to show in PS1
 git_prompt_path='/usr/share/git-core/contrib/completion/git-prompt.sh'

@@ -1,0 +1,26 @@
+[user]
+	name  = Christian Fosli
+	email = christian.fosli@capgemini.com
+[help]
+	autocorrect = 20
+[alias]
+	lg  = log --graph
+	lg1 = log --graph --oneline
+	lgf = log --first-parent
+	crlf = config core.autocrlf true  # Use Windows line endings
+	lf   = config core.autocrlf input # Use Linux   line endings
+[core]
+	autocrlf = input
+[log]
+	date = human
+[pull]
+	ff = only
+[merge]
+	tool = vimdiff
+	guitool = vscode
+[mergetool "vimdiff"]
+	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+[rebase]
+	autosquash = true
