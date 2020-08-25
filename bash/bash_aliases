@@ -12,6 +12,12 @@ lc() {
     ls "$1" | cut -c1-20 | column -c"${COLUMNS:-80}"
 }
 
+# Prettier
+prettier() {
+    docker run --rm -v "$(pwd)":/work tmknom/prettier "$@"
+}
+
+
 # Fix command like in vim command line window
 alias q:=fc
 

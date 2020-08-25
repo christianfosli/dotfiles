@@ -1,1 +1,1 @@
-setlocal formatprg=rustfmt
+setlocal formatprg=rustfmt\ --edition=2018
