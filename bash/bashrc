@@ -10,9 +10,9 @@
 PS1='\[\e[0;32m\][\u \W]\[\e[0;36m\]$(__git_ps1 2>/dev/null " %s🌿")\
 \[\e[0;32m\]\[\e[m\] \$ '
 
-# The git prompt script must be sourced in order for git branch to show in PS1
+# The git prompt script must be sourced for some dirstros in order for git branch to show in PS1
 git_prompt_path='/usr/share/git-core/contrib/completion/git-prompt.sh'
-[[ -f $git_prompt_path ]] && . $git_prompt_path || printf 'git prompt failed or not found\n'
+[[ -f $git_prompt_path ]] && . $git_prompt_path
 
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
