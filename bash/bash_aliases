@@ -14,7 +14,12 @@ lc() {
 
 # Prettier
 prettier() {
-    docker run --rm -v "$(pwd)":/work tmknom/prettier "$@"
+    docker run --rm -v "$(pwd):/work" tmknom/prettier "$@"
+}
+
+# Terraform Compliance
+terraform-compliance() {
+    docker run --rm -v "$(pwd):/target" -t eerkunt/terraform-compliance "$@"
 }
 
 
