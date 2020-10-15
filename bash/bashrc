@@ -21,17 +21,10 @@ HISTCONTROL=ignoreboth
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Alias definitions
-[[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
+[[ -f ~/.config/bash/bash_aliases ]] && . ~/.config/bash/bash_aliases
 
 # FZF keybindings
 [[ -f /usr/share/fzf/shell/keybindings.bash ]] && . /usr/share/fzf/shell/key-bindings.bash
-
-# Open files with default windows app on WSL
-if hash pwsh.exe 2> /dev/null; then
-    function wsl-open {
-        local windowspath="$(wslpath -w $@)" && pwsh.exe -c "start $windowspath";
-    }
-fi
 
 # Fun ES logs fn
 [[ -f ~/.config/scripts/log-es.bash ]] && . ~/.config/scripts/log-es.bash

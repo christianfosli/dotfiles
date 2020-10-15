@@ -22,9 +22,17 @@ terraform-compliance() {
     docker run --rm -v "$(pwd):/target" -t eerkunt/terraform-compliance "$@"
 }
 
+# Open files with default windows app on WSL
+if hash pwsh.exe 2> /dev/null; then
+    wsl-open() {
+        local windowspath="$(wslpath -w $@)" && pwsh.exe -c "start $windowspath";
+    }
+elif hash powershell.exe 2> /dev/null; then
+    wsl-open() {
+        local windowspath="$(wslpath -w $@)" && powershell.exe -c "start $windowspath";
+    }
+fi
 
-# Fix command like in vim command line window
-alias q:=fc
 
 # Alias vi to nvim
 alias vi='nvim'
