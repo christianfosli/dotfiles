@@ -7,7 +7,7 @@ export BASH_PROFILE_READ=1
 export DENO_INSTALL="/home/cfosli/.deno"
 
 # Add applicable dirs to path (if they are not there already and they exist)
-pathdirs="$HOME/.local/bin /usr/local/bin $HOME/bin $HOME/.yarn/bin $HOME/.npm/bin $HOME/.cargo/bin $DENO_INSTALL/bin $HOME/go/bin/"
+pathdirs="$HOME/.local/bin /usr/local/bin $HOME/bin $HOME/.yarn/bin $HOME/.npm/bin $HOME/.cargo/bin $DENO_INSTALL/bin $HOME/go/bin/ $HOME/.rider-2020.2.4/bin"
 for p in $pathdirs; do
     if [[ $PATH != *:$p:* && -d $p ]]; then
         PATH=$p:$PATH
@@ -43,5 +43,3 @@ export INPUTRC="$HOME/.config/readline/inputrc"
 
 # Get the aliases and functions
 [[ -f ~/.bashrc ]] && . ~/.bashrc
-
-export PATH="$HOME/.cargo/bin:$PATH"

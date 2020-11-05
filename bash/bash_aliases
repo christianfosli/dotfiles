@@ -12,14 +12,20 @@ lc() {
     ls "$1" | cut -c1-20 | column -c"${COLUMNS:-80}"
 }
 
-# Prettier
 prettier() {
     docker run --rm -v "$(pwd):/work" tmknom/prettier "$@"
 }
 
-# Terraform Compliance
 terraform-compliance() {
     docker run --rm -v "$(pwd):/target" -t eerkunt/terraform-compliance "$@"
+}
+
+postman() {
+    flatpak run com.getpostman.Postman
+}
+
+skype() {
+    flatpak run com.skype.Client
 }
 
 # Open files with default windows app on WSL
@@ -36,6 +42,9 @@ fi
 
 # Alias vi to nvim
 alias vi='nvim'
+
+# Keepass password manager
+alias kpass='keepassxc-cli'
 
 # Print weather to the console
 function weather() {

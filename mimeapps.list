@@ -1,0 +1,13 @@
+[Default Applications]
+x-scheme-handler/http=chromium-freeworld.desktop
+text/html=chromium-freeworld.desktop
+application/xhtml+xml=chromium-freeworld.desktop
+x-scheme-handler/https=chromium-freeworld.desktop
+x-scheme-handler/msteams=teams.desktop
+
+[Added Associations]
+x-scheme-handler/http=chromium-browser.desktop;chromium-freeworld.desktop;
+text/html=chromium-browser.desktop;chromium-freeworld.desktop;
+application/xhtml+xml=chromium-browser.desktop;chromium-freeworld.desktop;
+x-scheme-handler/https=chromium-browser.desktop;chromium-freeworld.desktop;
+image/png=org.gimp.GIMP.desktop;

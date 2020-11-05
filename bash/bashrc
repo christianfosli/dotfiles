@@ -29,9 +29,6 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # Fun ES logs fn
 [[ -f ~/.config/scripts/log-es.bash ]] && . ~/.config/scripts/log-es.bash
 
-# Stop here if we haven't read bash profile
-[[ $BASH_PROFILE_READ -eq 1 ]] || { printf "Warning: .bash_profile is not sourced\n"; return 1; }
-
 # Open tmux if its installed and no tmux sessions exist
 if hash tmux 2> /dev/null; then
     tmux ls &> /dev/null || tmux

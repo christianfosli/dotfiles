@@ -1,0 +1,7 @@
+{
+    "workbench.colorTheme": "Visual Studio 2019 Dark",
+    "editor.formatOnSave": true,
+    "omnisharp.enableEditorConfigSupport": true,
+    "omnisharp.enableRoslynAnalyzers": true,
+    "FSharp.useSdkScripts": true,
+}
