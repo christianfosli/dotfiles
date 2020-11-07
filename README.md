@@ -272,6 +272,22 @@ Open help-page: `git --help command`
 
 * resize panes `Ctrl-b alt-arrows`
 
+## quick-ref dotnet
+
+* run fsharp fsx script `dotnet fsi <filename>`
+
+* open fsharp interpreter `dotnet fsi --readline`
+
+## quick-ref docker
+
+* Most used commands: `docker ps`, `docker images`, `docker build`, `docker run`
+
+* Most used docker-run flags: `-it` interactive terminal, `-d` detached (in the background)
+
+* Detach from running container: Ctrl P Q
+
+* remove all non-running images: `docker rmi $(docker ps -aq)`
+
 ## special keys
 
 * `esq`   `Ctrl-]`
