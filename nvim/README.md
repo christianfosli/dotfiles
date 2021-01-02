@@ -12,6 +12,8 @@ or into `/opt` to load it manually with the `packadd` command
 
 * HerringtonDarkholme/yats.vim (yet another typescript syntax)
 
+* hashivim/vim-terraform
+
 * lervang/vimtex
 
 * neomake/neomake

@@ -51,6 +51,11 @@ augroup format_js
 	\ setlocal formatprg=prettier\ --parser\ babel-flow
 augroup END
 
+" Format terraform on save
+" (the tf plugin changes filetype from tf to terraform,
+" therefore putting it in ftplugin doesnt work properly)
+let g:terraform_fmt_on_save=1
+
 " Make (Set makeprg in after/ftplugin)
 if findfile('Makefile') ==# 'Makefile' || findfile('gradlew') ==# 'gradlew'
         nnoremap <buffer> <leader>m :silent !clear<cr>:make!<cr>
@@ -67,4 +72,3 @@ set runtimepath+=~/.skim
 
 " Fix stuck cursor in Windows Terminal
 au VimLeave * set guicursor=a:ver25
-
