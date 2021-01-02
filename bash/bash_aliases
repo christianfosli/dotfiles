@@ -28,6 +28,13 @@ skype() {
     flatpak run com.skype.Client
 }
 
+root_partition_full() {
+    journalctl --vacuum-size=500M
+    docker container prune
+    docker image prune
+    docker volume prune
+}
+
 # Open files with default windows app on WSL
 if hash pwsh.exe 2> /dev/null; then
     wsl-open() {
@@ -50,6 +57,9 @@ alias kpass='keepassxc-cli'
 function weather() {
     curl "wttr.in/$1"
 }
+
+# I keep misstyping kubectl
+alias k=kubectl
 
 # Mac / Linux / Windows (git-bash) specific
 if [[ "$(uname -s)" == "Darwin" ]]; then     # Mac-only:

@@ -4,10 +4,13 @@
 export BASH_PROFILE_READ=1
 
 # Deno wants this
-export DENO_INSTALL="/home/cfosli/.deno"
+export DENO_INSTALL="$HOME/.deno"
+
+# Install npm packages to local bin
+export NPM_PACKAGES="$HOME/.local/bin"
 
 # Add applicable dirs to path (if they are not there already and they exist)
-pathdirs="$HOME/.local/bin /usr/local/bin $HOME/bin $HOME/.yarn/bin $HOME/.npm/bin $HOME/.cargo/bin $DENO_INSTALL/bin $HOME/go/bin/ $HOME/.rider-2020.2.4/bin"
+pathdirs="$HOME/.local/bin /usr/local/bin $HOME/bin $HOME/.yarn/bin $HOME/.cargo/bin $DENO_INSTALL/bin $HOME/go/bin/ $HOME/.rider-2020.2.4/bin $HOME/.linkerd2/bin"
 for p in $pathdirs; do
     if [[ $PATH != *:$p:* && -d $p ]]; then
         PATH=$p:$PATH
@@ -30,6 +33,9 @@ fi
 
 # Let GPG know we dont have a GUI
 export GPG_TTY=$(tty)
+
+# Faster docker builds
+export DOCKER_BUILDKIT=1
 
 # Automatically open ssh-agent on Git-Bash for Windows
 [[ "$(uname -s)" == "MINGW64"*  ]] && . ~/dotfiles/scripts/auto_launch_ssh-agent_windows.sh
