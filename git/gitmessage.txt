@@ -1,0 +1,9 @@
+
+# <type>(optional scope): <description> | types: feat/fix/build/chore/ci/perf/refactor/test/...
+#
+# [optional body]
+#
+# [optional footer(s)]    Fixes #issue / Co-authored-by: name <email> / See-also: <commit> /...
+#
+# Breaking changes: append `!` after type/scope or add `BREAKING CHANGE` footer
+# Full spec at www.conventionalcommits.org

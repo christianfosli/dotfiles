@@ -11,6 +11,8 @@
 	lf   = config core.autocrlf input # Use Linux   line endings
 [core]
 	autocrlf = input
+[commit]
+	template = ~/.config/git/gitmessage.txt
 [log]
 	date = human
 [pull]
