@@ -36,3 +36,5 @@ procps
 skypeforlinux
 user-dirs.*
 yelp
+
+bash/secrets.env

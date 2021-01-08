@@ -3,31 +3,19 @@
 # Source global definitions
 [[ -f /etc/bashrc ]] && . /etc/bashrc
 
-# User specific aliases and functions
-
 # Bash prompt, based on fedora default, but with color and git branch!
 # note non-printing parts are escaped inside \[ ... \] to make length known
-PS1='\[\e[0;32m\][\u \W]\[\e[0;36m\]$(__git_ps1 2>/dev/null " %s🌿")\
-\[\e[0;32m\]\[\e[m\] \$ '
+PS1='\[\e[0;32m\][\u \W]\[\e[0;36m\]$(__git_ps1 2>/dev/null " %s🌿")\[\e[0;32m\]\[\e[m\] \$ '
 
-# The git prompt script must be sourced for some dirstros in order for git branch to show in PS1
+# The git prompt script must sometimes be sourced to show git branch in PS1
 git_prompt_path='/usr/share/git-core/contrib/completion/git-prompt.sh'
-[[ -f $git_prompt_path ]] && . $git_prompt_path
+[[ -f "$git_prompt_path" ]] && . "$git_prompt_path"
 
-# don't put duplicate lines or lines starting with space in the history.
-HISTCONTROL=ignoreboth
+# Kubectl completion (automatically sourced in bash-completion 2.9, TODO: Remove when Fedora updates)
+[[ -f ~/.local/share/bash-completion/kubectl ]] && . ~/.local/share/bash-completion/kubectl
 
-# colored GCC warnings and errors
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# Alias definitions
+# Aliases and functions
 [[ -f ~/.config/bash/bash_aliases ]] && . ~/.config/bash/bash_aliases
-
-# FZF keybindings
-[[ -f /usr/share/fzf/shell/keybindings.bash ]] && . /usr/share/fzf/shell/key-bindings.bash
-
-# Fun ES logs fn
-[[ -f ~/.config/scripts/log-es.bash ]] && . ~/.config/scripts/log-es.bash
 
 # Open tmux if its installed and no tmux sessions exist
 if hash tmux 2> /dev/null; then

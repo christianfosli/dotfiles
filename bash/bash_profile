@@ -1,51 +1,15 @@
-# .bash_profile
+# bash_profile: executed for login shells
 
-# Set a variable to let .bashrc know this has run
-export BASH_PROFILE_READ=1
+# Add environment variables
+set -a
+BASH_PROFILE_READ=1 # let .bashrc know this has run
+. ~/.config/bash/variables.env
+. ~/.config/bash/secrets.env
+set +a
 
-# Deno wants this
-export DENO_INSTALL="$HOME/.deno"
-
-# Install npm packages to local bin
-export NPM_PACKAGES="$HOME/.local/bin"
-
-# Add applicable dirs to path (if they are not there already and they exist)
-pathdirs="$HOME/.local/bin /usr/local/bin $HOME/bin $HOME/.yarn/bin $HOME/.cargo/bin $DENO_INSTALL/bin $HOME/go/bin/ $HOME/.rider-2020.2.4/bin $HOME/.linkerd2/bin"
-for p in $pathdirs; do
-    if [[ $PATH != *:$p:* && -d $p ]]; then
-        PATH=$p:$PATH
-    fi
-done
-export PATH
-
-# Set vim to default editor
-if hash nvim 2> /dev/null; then # Use nvim if we have it
-    export VISUAL=nvim
-else
-    export VISUAL=vim
-fi
-export EDITOR=$VISUAL
-
-# Get better ls colors on Mac OS
-if [[ "$(uname -s)" == "Darwin"  ]]; then
-    export LSCOLORS='Exgxcxdxbxegedabagacad'
-fi
-
-# Let GPG know we dont have a GUI
-export GPG_TTY=$(tty)
-
-# Faster docker builds
-export DOCKER_BUILDKIT=1
-
-# Automatically open ssh-agent on Git-Bash for Windows
-[[ "$(uname -s)" == "MINGW64"*  ]] && . ~/dotfiles/scripts/auto_launch_ssh-agent_windows.sh
-
-# Automatically open ssh-agent on Linux
+# Automatically open ssh-agent
 [[ "$(uname -s)" == "Linux"* ]] && [[ "$SSH_AUTH_SOCK" == "" ]] && eval "$(ssh-agent -s)" &&\
 ssh-add
 
-# Work-around for XDG_CONFIG_HOME for readline
-export INPUTRC="$HOME/.config/readline/inputrc"
-
 # Get the aliases and functions
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+[[ -f ~/.config/bash/bashrc ]] && . ~/.config/bash/bashrc

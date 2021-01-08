@@ -1,38 +1,45 @@
 #!/bin/bash
-# file: ~/.bash_aliases  (sourced from ~/.bashrc)
-# author: Christian Fosli <cfosli@gmail.com>
+# bash_aliases: sourced from bashrc
 shopt -s expand_aliases
+
+alias vi=nvim
+
+alias k=kubectl
+complete -F __start_kubectl k
+
+alias weather='curl wttr.in'
+
+# Flatpak run shortcuts
+alias postman='flatpak run com.getpostman.Postman'
+alias skype='flatpak run com.skype.Client'
+
+# Docker run shortcuts
+alias prettier='docker run --rm -v "$(pwd):/work" tmknom/prettier'
+alias terraform-compliance='docker run --rm -v "$(pwd):/target" -t eerkunt/terraform-compliance'
 
 # Get some colors
 alias grep='grep --color=auto'
+alias ls='ls --color=auto'
+alias ip='ip --color'
 
-# Cut filenames at 20 characters and make columns:
+# Start calendar on mondays
+hash ncal 2> /dev/null && alias cal='ncal -bMw' || alias cal='cal -w --monday'
+
+# ls with long filenames truncated to 20 chars:
 lc() {
-    [[ -z "$1" ]] && set -- "."
-    ls "$1" | cut -c1-20 | column -c"${COLUMNS:-80}"
-}
-
-prettier() {
-    docker run --rm -v "$(pwd):/work" tmknom/prettier "$@"
-}
-
-terraform-compliance() {
-    docker run --rm -v "$(pwd):/target" -t eerkunt/terraform-compliance "$@"
-}
-
-postman() {
-    flatpak run com.getpostman.Postman
-}
-
-skype() {
-    flatpak run com.skype.Client
+    ls ${1:-.} | cut -c1-20 | column -c"${COLUMNS:-80}"
 }
 
 root_partition_full() {
-    journalctl --vacuum-size=500M
+    sudo journalctl --vacuum-size=100M
+    sudo dnf clean all
     docker container prune
     docker image prune
     docker volume prune
+    docker builder prune
+    echo -e "\n\nFinished cleaning\n\n"
+    docker system df
+    echo "if docker is still taking a lot of space, consider prune with the '-a' flag"
 }
 
 # Open files with default windows app on WSL
@@ -40,39 +47,4 @@ if hash pwsh.exe 2> /dev/null; then
     wsl-open() {
         local windowspath="$(wslpath -w $@)" && pwsh.exe -c "start $windowspath";
     }
-elif hash powershell.exe 2> /dev/null; then
-    wsl-open() {
-        local windowspath="$(wslpath -w $@)" && powershell.exe -c "start $windowspath";
-    }
-fi
-
-
-# Alias vi to nvim
-alias vi='nvim'
-
-# Keepass password manager
-alias kpass='keepassxc-cli'
-
-# Print weather to the console
-function weather() {
-    curl "wttr.in/$1"
-}
-
-# I keep misstyping kubectl
-alias k=kubectl
-
-# Mac / Linux / Windows (git-bash) specific
-if [[ "$(uname -s)" == "Darwin" ]]; then     # Mac-only:
-    alias see='qlmanage -p &>/dev/null'
-    alias ls='ls -G'
-elif [[ "$(uname -s)" == "MINGW64"* ]]; then # Git-bash only:
-    alias see='start'
-    alias py3='winpty python'
-    alias pip='winpty pip'
-    alias npm='winpty npm.cmd'
-else    # Linux-only aliases
-    alias ls='ls --color=auto'
-    alias ip='ip --color'
-    hash ncal 2> /dev/null && alias cal='ncal -bMw' || alias cal='cal -w --monday'
-    hash see 2> /dev/null || alias see='xdg-open'
 fi
