@@ -1,7 +1,8 @@
 # dotfiles 
 
 I use this repo to backup and keep in sync my bash/git/tmux ++
-config files. I'm mostly using WSL these days.
+config files. I go a bit back and forth between Fedora Linux and WSL with
+Ubuntu.
 
 **I advise against using these dotfiles directly.
 Some commands may only work specifically on my set-up or in my workflow.
@@ -13,9 +14,6 @@ Feel free to copy relevant bits into your own dotfiles**
 
 * Symlink the bash config files. Most of the other dotfiles should work by
   themselves due to [XDG base directory](https://wiki.archlinux.org/index.php/XDG_Base_Directory)
-
-* The `mailcap` file is useful on WSL. It requires
-  [wsl-open](https://github.com/4U6U57/wsl-open)
 
 ## quick-ref bash / GNU tools
 
