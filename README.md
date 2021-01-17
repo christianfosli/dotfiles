@@ -15,7 +15,7 @@ Feel free to copy relevant bits into your own dotfiles**
 * Symlink the bash config files. Most of the other dotfiles should work by
   themselves due to [XDG base directory](https://wiki.archlinux.org/index.php/XDG_Base_Directory)
 
-## quick-ref bash / GNU tools
+## Quick-Ref bash / GNU tools
 
 * Exit `Ctrl-D`
 
@@ -36,6 +36,8 @@ Feel free to copy relevant bits into your own dotfiles**
   * Move by words `Ctrl- <Arrow-Keys>`
 
   * Open command in $EDITOR, execute upon exit `Ctrl-x Ctrl-e` or `fc`
+
+### Files and Directories
 
 * Push/Pop directories to stack `pushd $dir` then later `popd`
 
@@ -61,41 +63,45 @@ Feel free to copy relevant bits into your own dotfiles**
 
 * Create symlink `ln -s actual_file_path symlink_path`
 
-* List all files in long format (with permissions and stuff) `ls -la`
-  (usually aliased to `ll`
+* Extract .tar.gz file `tar -xzf <filename` (remember eXtract tZe File)
 
-* Network Stuffs
+### Networking
 
-  (mostly just tested on Fedora Linux)
-  
-  * List ip-address `ip addr`
-  
-  * List ip addresses on same network: `ip neigh`
+* List ip-address `ip addr`
 
-  * Check hostname for ip in local network: `nmblookup -A <ip>`
+* List ip addresses on same network: `ip neigh`
 
-  * SSH `ssh username@ip -p portnumber`
+* Check hostname for ip in local network: `nmblookup -A <ip>`
 
-    * Start ssh service to allow log-ins (fedora) `systemctl start sshd.service`
+* SSH `ssh username@ip -p portnumber`
 
-  * Copy files between local computer and remote 
-    `scp $file username@ip:/home/$dir` or `scp username@ip:/home/$file $localdir`
+  * Start ssh service to allow log-ins (fedora) `systemctl start sshd.service`
 
-  * Check wifi devices, connect to wifi networks etc 
-    `nmcli radio ...`, `nmcli device wifi...`, `nmcli connection ...`
+* Copy files between local computer and remote 
+  `scp $file username@ip:/home/$dir` or `scp username@ip:/home/$file $localdir`
 
-## quick-ref git
+* Check wifi devices, connect to wifi networks etc 
+  `nmcli radio ...`, `nmcli device wifi...`, `nmcli connection ...`
 
-Open help-page: `git --help command`
+* Good-to-know cURL options
 
-* Init
+  * Download to file from URL: `-O`
 
-  * Create a new repo     `git init`
+  * Silent: `--silent` | `-s`. Good idea when piping output to e.g. bash.
 
-  * Clone existing repo   `git clone url`
-  
-  * Add a submodule       `git submodule add url` then `git submodule init`
-    (If cloning a repo which uses submodules we still need to 'submodule init')
+  * Follow redirects: `--location` | `-L`
+
+  * Retries: `--retry <n>`
+
+  * Fail on bad status code: `--fail` | `-f`
+
+  * Basic auth: `-u username:pass`
+
+  * Client certs: `--cert cert-w-key.pem:password` or `--cert cert.crt --key key.key`
+
+## Quick-Ref git
+
+Open help-page: `git help command`
 
 * Everyday work
 
@@ -105,11 +111,6 @@ Open help-page: `git --help command`
 
     * one-line commits: `git log [--graph --all] --oneline`
 
-    * only show first parent for merge-commits:
-      `git log --first-parent [-m --stat]`
-
-    * GUI log: `gitk [--all]`
-
   * Add files to stage    `git add filename`
 
     * Stage part of file  `git add -p filename`
@@ -118,7 +119,7 @@ Open help-page: `git --help command`
 
     * Check message and diff of commit: `git show <commit-hash>`
 
-    * Check diff of a merge commit:
+    * Check diff for a merge commit:
 
       * Given this commit:
       ```patch
@@ -129,8 +130,6 @@ Open help-page: `git --help command`
       ```console
       git diff aaa111...bbb222
       ```
-  * Show commit message and changes in a commit `git show --stat <commit-hash>/<branch>`
-
   * Commit stage to current branch `git commit`
 
     * Commit all tracked files with changes: `git commit -a`
@@ -139,33 +138,15 @@ Open help-page: `git --help command`
 
     * Show diff below the commit message: `git commit -v`
 
-    * Note for writing commit message:
-      "When applied this commit will " + Header max 50 char
-
-      * Commit message trailers:
-
-        - Closes: #Bugnumber
-
-        - Fixes: #Bugnumber
-
-        - Related-Bug: #Bugnumber
-
-        - Co-Authered-by: Name <email>
-
-        - Related work items: #tasknumber     (az dev ops)
-
   * Undo changes          `git restore <filename>`
 
   * Unstage file          `git reset <filename>`
 
-  * Does origin/dev have new commits? (commits not reachable from HEAD)
+* Misc
 
-    `git fetch origin && git log ..origin/dev`
+  * Does origin/master have new commits? (commits not reachable from HEAD)
 
-  * Show commits reachable from `<branch>` but not origin/dev
-  i.e. which changes will be introduced when I PR `branch` into origin/dev
-
-    `git log origin/dev..<branch>`
+    `git fetch origin && git log ..origin/master`
 
   * Ignore future local changes to a tracked file (useful for config files...)
     `git update-index --skip-worktree <filename>`
@@ -190,8 +171,7 @@ Open help-page: `git --help command`
 
   * Delete every branch except master `git branch | grep -v "master" | xargs git branch -D`
 
-  * Reset branch to earlier commit / branch / tag
-                          `git reset --hard <commit>`
+  * Reset branch to earlier commit / branch / tag `git reset --hard <commit>`
 
   * Clean up latest n commits
     (opens interactive rebase editor letting you squash
@@ -217,42 +197,9 @@ Open help-page: `git --help command`
 
   * Push and add upstream (tracking) reference `git push -u <remote> <branch>`
 
-  * Delete remote         `git push <remote> -d <branch>`
+  * Delete remote branch  `git push <remote> -d <branch>`
 
   * Update submodules     `git submodule update` or `git submodule update --remote`
-
-### Nice branch model for smaller/personal projects * *
-
-[Ref](http://www.bitsnbites.eu/a-stable-mainline-branching-model-for-git)
-
-* Master branch
-
-  * Builds/runs and tests pass
-
-  * Tag commits that represent a release version `vx.y.z` (major.minor.patch)
-
-* Feature branches - make dedicated (short-lived) branches for features
-
-  * named "feature/description" e.g. "feature/add-timeline"
-
-  * based on origin/master. Frequently rebase origin/master into this.
-
-  * merge into master when complete (typically via PR)
-
-### Git Flow
-
-* Master branch: Represents code in prod
-
-* Develop branch: Updated with latest features and fixes!
-
-* Feature branch: Branched from dev. Merged back to dev once done
-  (typically via a PR)
-
-* Release branch: Branched from dev. Test. Branch to master AND dev when
-  ready for prod, and tag the commit on master `vx.y`.
-
-* Hotfix branch: Important bug found in prod. Branched from master.
-  Once fixed, merge into both master and dev.
 
 ## quick-ref tmux
 
@@ -284,7 +231,9 @@ Open help-page: `git --help command`
 
 * Detach from running container: Ctrl P Q
 
-* remove all non-running images: `docker rmi $(docker ps -aq)`
+* Remove all non-running images: `docker rmi $(docker ps -aq)` or `docker image prune -a`
+
+* Check disk usage: `docker system df`
 
 ## special keys
 
