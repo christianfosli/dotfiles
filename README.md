@@ -85,19 +85,23 @@ Feel free to copy relevant bits into your own dotfiles**
 
 * Good-to-know cURL options
 
-  * Download to file from URL: `-O`
+  * Download to file using filename from URL: `-O` | `--remote-name`
 
-  * Silent: `--silent` | `-s`. Good idea when piping output to e.g. bash.
+  * Silent: `-s` | `--silent`. Don't show the progress bar.
 
-  * Follow redirects: `--location` | `-L`
+  * Follow redirects: `-L` | `--location`
 
   * Retries: `--retry <n>`
 
-  * Fail on bad status code: `--fail` | `-f`
+  * Fail silently on HTTP errors / bad status codes: `-f` | `--fail`
 
-  * Basic auth: `-u username:pass`
+  * Include response headers in output: `-i` | `--include`
+
+  * Username/password: `-u username:pass`
 
   * Client certs: `--cert cert-w-key.pem:password` or `--cert cert.crt --key key.key`
+
+  * Allow insecure TLS connections (i.e. untrusted certs): `-k` | `--insecure`
 
 ## Quick-Ref git
 
