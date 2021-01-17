@@ -16,6 +16,7 @@ alias skype='flatpak run com.skype.Client'
 # Docker run shortcuts
 alias prettier='docker run --rm -v "$(pwd):/work" tmknom/prettier'
 alias terraform-compliance='docker run --rm -v "$(pwd):/target" -t eerkunt/terraform-compliance'
+alias yq='docker run --rm -i -v "$(pwd):/workdir" mikefarah/yq'
 
 # Get some colors
 alias grep='grep --color=auto'
