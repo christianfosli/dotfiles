@@ -1,21 +1,15 @@
 Christians neovim configuration
 -------------------------------
 
-## Plugins
+**Only tested on Linux!!**
 
-Plugins must be installed by `git clone` into `.local/share/nvim/site/pack/*/start`
-or into `/opt` to load it manually with the `packadd` command
+## Usage
 
-### My Plugins
+Clone so that it's available at ~/.config/nvim, then run the setup script.
 
-* christianfosli/wsl-copy
+```console
+./setup.sh
+```
 
-* HerringtonDarkholme/yats.vim (yet another typescript syntax)
-
-* hashivim/vim-terraform
-
-* lervang/vimtex
-
-* neomake/neomake
-
-* tpope/vim-sleuth (automatic indentation)
+The setup script should be run periodically to update plugins and
+language-servers.
