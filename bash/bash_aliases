@@ -15,8 +15,13 @@ alias skype='flatpak run com.skype.Client'
 
 # Docker run shortcuts
 alias prettier='docker run --rm -v "$(pwd):/work" tmknom/prettier'
+alias shellcheck='docker run --rm -v "$(pwd):/mnt" koalaman/shellcheck:stable'
 alias terraform-compliance='docker run --rm -v "$(pwd):/target" -t eerkunt/terraform-compliance'
 alias yq='docker run --rm -i -v "$(pwd):/workdir" mikefarah/yq'
+
+# Decode this JWT real quick
+# Usage: echo "$JWT" | jwt-d
+alias jwt-d='step crypto jwt inspect --insecure'
 
 # Get some colors
 alias grep='grep --color=auto'

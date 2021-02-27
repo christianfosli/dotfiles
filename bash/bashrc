@@ -14,6 +14,9 @@ git_prompt_path='/usr/share/git-core/contrib/completion/git-prompt.sh'
 # Kubectl completion (automatically sourced in bash-completion 2.9, TODO: Remove when Fedora updates)
 [[ -f ~/.local/share/bash-completion/kubectl ]] && . ~/.local/share/bash-completion/kubectl
 
+# Azure-CLI completion
+. <(curl -sfL https://raw.githubusercontent.com/Azure/azure-cli/dev/az.completion)
+
 # Aliases and functions
 [[ -f ~/.config/bash/bash_aliases ]] && . ~/.config/bash/bash_aliases
 
