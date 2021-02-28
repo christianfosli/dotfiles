@@ -22,6 +22,9 @@ local autocmds = {
   format_tf = {
     { 'FileType tf,terraform let g:terraform_fmt_on_save=1' };
   };
+  fsharp_ft = {
+    { 'BufNewFile,BufRead *.fs,*.fsx,*.fsi set filetype=fsharp' };
+  };
   fix_windows_terminal = {
     { 'VimLeave', '*', 'set guicursor=a:ver25' };
   };
