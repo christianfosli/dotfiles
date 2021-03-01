@@ -13,7 +13,7 @@ put_plugin() {
         printf '\nChecking for updates for %s\n' "$1"
         cd "$path"
         git fetch
-        if [[ "$(git rev-parse HEAD)" == $(git rev-parse origin) ]]; then
+        if [[ "$(git rev-parse HEAD)" == "$(git rev-parse origin)" ]]; then
             printf 'No changes\n'
         else
             printf 'Changes found\n'
@@ -27,9 +27,13 @@ put_plugin() {
         updated=true
     fi
 
-    if [[ updated && -d "$path/doc" ]]; then
+    if [[ updated == true && -d "$path/doc" ]]; then
         printf 'Adding/updating docs for %s\n' "$1"
         nvim --headless -u NONE -c "helptags $path/doc" -c q
+    fi
+
+    if [[ updated == true && "$1" == "nvim-tresitter/start/nvim-tresitter" ]]; then
+        printf 'Pls run :TSUpdate to update parsers\n'
     fi
 }
 
@@ -46,37 +50,44 @@ else
     printf '.spl file is up-to-date\n'
 fi
 
-printf '\nInstalling language servers...\n'
+printf '\nInstalling/updating language servers...\n'
 printf '...for python\n'
-npm i -g pyright
+if hash pyright 2>/dev/null; then
+    npm up -g pyright
+else
+    npm i -g pyright
+fi
 printf '\n...and typescript\n'
-npm i -g typescript typescript-language-server
-pushd ~/.local/bin
+if hash typescript-language-server 2>/dev/null; then
+    npm up -g typescript typescript-langugage-server
+else
+    npm i -g typescript typescript-language-server
+fi
 printf '\n...and rust\n'
+cd ~/.local/bin
 curl -LOf https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux.gz \
-    && gunzip -f rust-analyzer-linux.gz \
-    && mv rust-analyzer-* rust-analyzer
-    && chmod +x rust-analyze
-popd
-pushd ~/.local/lib
+    && gunzip rust-analyzer-linux.gz \
+    && mv rust-analyzer-linux rust-analyzer \
+    && chmod +x rust-analyzer
+cd -
 printf '\n...and fsharp\n'
+cd ~/.local/lib
 curl -LOf https://github.com/fsharp/FsAutoComplete/releases/latest/download/fsautocomplete.netcore.zip \
     && (rm -rf fsautocomplete || true) \
-    && unzip fsautocomplete.netcore.zip -d fsautocomplete \
-    && rm fsautocomplete.netcore.zip
-    && pushd fsautocomplete
-    && printf 'fixing permissions for fsautocomplete (workaround for issue #715)\n'
-    && find . -type f -exec chmod 644 {} \;
-    popd
-popd
+    && unzip -q fsautocomplete.netcore.zip -d fsautocomplete \
+    && rm fsautocomplete.netcore.zip \
+    && pushd fsautocomplete \
+    && printf 'fixing permissions for fsautocomplete (workaround for issue #715)\n' \
+    && find . -type f -exec chmod 644 {} \; \
+    && popd
+cd -
 
-printf '\nUpdating plugins...\n'
+printf '\nInstalling/updating plugins...\n'
 put_plugin 'christianfosli/start/wsl-copy' 'git@github.com:christianfosli/wsl-copy.git'
 put_plugin 'hashivim/start/vim-terraform' 'git@github.com:hashivim/vim-terraform.git'
 put_plugin 'tpope/start/sleuth' 'https://tpope.io/vim/sleuth.git'
 put_plugin 'neovim/start/nvim-lspconfig' 'git@github.com:neovim/nvim-lspconfig.git'
 put_plugin 'nvim-tresitter/start/nvim-tresitter' 'git@github.com:nvim-treesitter/nvim-treesitter.git'
-printf '^^ If there was updates to nvim-tresitter pls run `:TSUpdate` to update the parsers\n'
 
 printf '\nnvim-tresitter requires c++ compiler\n'
 if hash dnf 2>/dev/null; then
