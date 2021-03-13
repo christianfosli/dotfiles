@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eo pipefail
 
-pkgs='skim neovim git curl'
+pkgs='skim neovim git curl ripgrep'
 workstation_pkgs='chromium-freeworld gnome-tweaks docker keepassxc'
 
 if hash apt; then

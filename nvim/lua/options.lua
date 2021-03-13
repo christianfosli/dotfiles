@@ -5,9 +5,15 @@ local function opt(scope, key, value)
   if scope ~= 'o' then scopes['o'][key] = value end
 end
 
+vim.cmd([[
+  if has("termguicolors")
+    set termguicolors
+  endif
+]])
+
+opt('w', 'number', true)
 opt('o', 'ignorecase', true)
 opt('o', 'smartcase', true)
 opt('o', 'autowrite', true)
-opt('o', 'laststatus', 1)
 opt('o', 'hidden', true)
 opt('b', 'spelllang', 'en,nb')

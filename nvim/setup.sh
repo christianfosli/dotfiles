@@ -88,6 +88,7 @@ put_plugin 'hashivim/start/vim-terraform' 'git@github.com:hashivim/vim-terraform
 put_plugin 'tpope/start/sleuth' 'https://tpope.io/vim/sleuth.git'
 put_plugin 'neovim/start/nvim-lspconfig' 'git@github.com:neovim/nvim-lspconfig.git'
 put_plugin 'nvim-tresitter/start/nvim-tresitter' 'git@github.com:nvim-treesitter/nvim-treesitter.git'
+put_plugin 'Iron-E/start/nvim-highlite' 'git@github.com:Iron-E/nvim-highlite.git'
 
 printf '\nnvim-tresitter requires c++ compiler\n'
 if hash dnf 2>/dev/null; then

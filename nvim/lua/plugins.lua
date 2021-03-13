@@ -1,5 +1,8 @@
 vim.cmd 'set runtimepath+=~/.skim'
 
+--- Color Scheme ---
+vim.cmd 'colorscheme highlite'
+
 --- Language Server Config ---
 
 local on_attach = function(client, bufnr)
