@@ -235,6 +235,10 @@ Open help-page: `git help command`
 
 * Check disk usage: `docker system df`
 
+## quick-ref alacritty
+
+* Launch vi mode: Ctrl Shift Space
+
 ## special keys
 
 * `esq`   `Ctrl-]`
