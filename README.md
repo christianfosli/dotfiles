@@ -48,18 +48,14 @@ Feel free to copy relevant bits into your own dotfiles**
 * **GREP**: Recursively search for "pattern" and print matching lines and
   line numbers `grep -rn pattern dir`  (use `.` for `dir` for current)
 
-  * Use *extended* regular expressions such as `(), |,`
-    :grep -E "(.png$|.PNG$)" .
-  
-  * Exclude dir: `grep -rn --exclude-dir=node_modules pattern dir`
-
   * Exclude `.gitignore`: `git grep -n pattern dir`
 
-* Find files by filename: `find . -name "pattern"` or
- `find . -name node_modules -prune -o -name tmux* -print`
- ( if we find node\_modules, stop dont look inside => TRUE  OR   if name tmux* print it. )
+  * Hint: ripgrep / `rg` is easier to use and super fast
 
- * Or use a fuzzy finder like FZF or [skim](https://github.com/lotabout/skim)
+* Find files by filename: `find . -name "pattern"`
+
+  * A fuzzy finder like FZF or [skim](https://github.com/lotabout/skim) is
+    easier to use.
 
 * Create symlink `ln -s actual_file_path symlink_path`
 
@@ -79,9 +75,6 @@ Feel free to copy relevant bits into your own dotfiles**
 
 * Copy files between local computer and remote 
   `scp $file username@ip:/home/$dir` or `scp username@ip:/home/$file $localdir`
-
-* Check wifi devices, connect to wifi networks etc 
-  `nmcli radio ...`, `nmcli device wifi...`, `nmcli connection ...`
 
 * Good-to-know cURL options
 
@@ -119,6 +112,8 @@ Open help-page: `git help command`
 
     * Stage part of file  `git add -p filename`
 
+  * Unstage file          `git reset <filename>` or `git restore --staged <filename>`
+
   * Check diff            `git diff branch1 branch2`  or `file1 file2` etc
 
     * Check message and diff of commit: `git show <commit-hash>`
@@ -134,6 +129,7 @@ Open help-page: `git help command`
       ```console
       git diff aaa111...bbb222
       ```
+
   * Commit stage to current branch `git commit`
 
     * Commit all tracked files with changes: `git commit -a`
@@ -142,9 +138,9 @@ Open help-page: `git help command`
 
     * Show diff below the commit message: `git commit -v`
 
-  * Undo changes          `git restore <filename>`
+  * Restore file to HEAD  `git restore <filename>`
 
-  * Unstage file          `git reset <filename>`
+  * Restore file to branch `git restore -s <branchname> <filename>`
 
 * Misc
 
