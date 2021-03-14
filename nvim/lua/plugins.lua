@@ -3,6 +3,9 @@ vim.cmd 'set runtimepath+=~/.skim'
 --- Color Scheme ---
 vim.cmd 'colorscheme highlite'
 
+--- Auto Pairs ---
+require'nvim-autopairs'.setup()
+
 --- Language Server Config ---
 
 local on_attach = function(client, bufnr)
@@ -26,16 +29,24 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', '<leader>l', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
-  -- Set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "gq", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  elseif client.resolved_capabilities.document_range_formatting then
+  -- Set keybinds conditional on server capabilities
+  if client.resolved_capabilities.document_range_formatting then
     buf_set_keymap("n", "gq", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   end
 
   -- Set autocommands conditional on server_capabilities
+  if client.resolved_capabilities.document_formatting then
+    vim.api.nvim_exec([[
+      augroup lsp_format_on_save
+        autocmd! * <buffer>
+        autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 3000)
+      augroup END
+    ]], false)
+  end
+
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec([[
       hi LspReferenceRead cterm=bold ctermbg=DarkYellow guibg=LightYellow
