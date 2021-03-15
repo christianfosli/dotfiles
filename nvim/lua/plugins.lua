@@ -1,13 +1,28 @@
-vim.cmd 'set runtimepath+=~/.skim'
-
 --- Color Scheme ---
+vim.cmd 'packadd! nvim-highlite'
 vim.cmd 'colorscheme highlite'
 
+--- Smart Indentation ---
+vim.cmd 'packadd! sleuth'
+
 --- Auto Pairs ---
+vim.cmd 'packadd! nvim-autopairs'
 require'nvim-autopairs'.setup()
 
---- Language Server Config ---
+--- Fuzzy Finder ---
+vim.cmd 'set runtimepath+=~/.skim'
 
+--- TreeSitter config ---
+vim.cmd 'packadd! nvim-tresitter'
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true,
+  },
+}
+
+--- Language Server Config ---
+vim.cmd 'packadd! nvim-lspconfig'
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -16,13 +31,14 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gf', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', '<C-]>', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   -- hint: go back with `<C-t>`
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<leader>k', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -66,17 +82,9 @@ local pid = vim.fn.getpid()
 
 nvim_lsp.pyright.setup { on_attach = on_attach }
 nvim_lsp.rust_analyzer.setup { on_attach = on_attach }
+nvim_lsp.terraformls.setup { on_attach = on_attach }
 nvim_lsp.tsserver.setup { on_attach = on_attach }
 nvim_lsp.fsautocomplete.setup {
   cmd = { 'dotnet', '/home/cfosli/.local/lib/fsautocomplete/fsautocomplete.dll', '--background-service-enabled' };
   on_attach = on_attach
-}
-
---- TreeSitter config ---
-
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained",
-  highlight = {
-    enable = true,
-  },
 }

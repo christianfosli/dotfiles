@@ -7,7 +7,7 @@ put_plugin() {
     # See `:help packages` in vim/neovim for details
     local path="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/pack/$1"
     local repo="$2"
-    local updated=false
+    local updated='false'
 
     if [[ -d "$path" ]]; then
         printf '\nChecking for updates for %s\n' "$1"
@@ -18,21 +18,21 @@ put_plugin() {
         else
             printf 'Changes found\n'
             git rebase origin
-            updated=true
+            updated='true'
         fi
     else
         printf '\nInstalling plugin %s\n' "$1"
         mkdir -p "$path"
         git clone "$repo" "$path"
-        updated=true
+        updated='true'
     fi
 
-    if [[ updated == true && -d "$path/doc" ]]; then
+    if [[ updated == 'true' && -d "$path/doc" ]]; then
         printf 'Adding/updating docs for %s\n' "$1"
         nvim --headless -u NONE -c "helptags $path/doc" -c q
     fi
 
-    if [[ updated == true && "$1" == "nvim-tresitter/start/nvim-tresitter" ]]; then
+    if [[ updated == 'true' && "$1" == "nvim-tresitter/opt/nvim-tresitter" ]]; then
         printf 'Pls run :TSUpdate to update parsers\n'
     fi
 }
@@ -63,6 +63,16 @@ if hash typescript-language-server 2>/dev/null; then
 else
     npm i -g typescript typescript-language-server
 fi
+printf '\n...and terraform\n'
+if hash terraform-ls 2>/dev/null; then
+    printf 'terraform-ls is already installed\n'
+elif hash dnf 2>/dev/null; then
+    printf 'installing terraform-ls through dnf. assuming hashicorp repo available\n'
+    sudo dnf -y install terraform-ls
+else
+    printf 'not sure how to install terraform-ls'
+    exit 1
+fi
 printf '\n...and rust\n'
 cd ~/.local/bin
 curl -LOf https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux.gz \
@@ -83,13 +93,12 @@ curl -LOf https://github.com/fsharp/FsAutoComplete/releases/latest/download/fsau
 cd -
 
 printf '\nInstalling/updating plugins...\n'
-put_plugin 'christianfosli/start/wsl-copy' 'git@github.com:christianfosli/wsl-copy.git'
-put_plugin 'hashivim/start/vim-terraform' 'git@github.com:hashivim/vim-terraform.git'
-put_plugin 'tpope/start/sleuth' 'https://tpope.io/vim/sleuth.git'
-put_plugin 'windwp/start/nvim-autopairs' 'git@github.com:windwp/nvim-autopairs.git'
-put_plugin 'neovim/start/nvim-lspconfig' 'git@github.com:neovim/nvim-lspconfig.git'
-put_plugin 'nvim-tresitter/start/nvim-tresitter' 'git@github.com:nvim-treesitter/nvim-treesitter.git'
-put_plugin 'Iron-E/start/nvim-highlite' 'git@github.com:Iron-E/nvim-highlite.git'
+put_plugin 'christianfosli/opt/wsl-copy' 'git@github.com:christianfosli/wsl-copy.git'
+put_plugin 'tpope/opt/sleuth' 'https://tpope.io/vim/sleuth.git'
+put_plugin 'windwp/opt/nvim-autopairs' 'git@github.com:windwp/nvim-autopairs.git'
+put_plugin 'neovim/opt/nvim-lspconfig' 'git@github.com:neovim/nvim-lspconfig.git'
+put_plugin 'nvim-tresitter/opt/nvim-tresitter' 'git@github.com:nvim-treesitter/nvim-treesitter.git'
+put_plugin 'Iron-E/opt/nvim-highlite' 'git@github.com:Iron-E/nvim-highlite.git'
 
 printf '\nnvim-tresitter requires c++ compiler\n'
 if hash dnf 2>/dev/null; then

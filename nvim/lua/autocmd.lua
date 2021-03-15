@@ -14,16 +14,16 @@ end
 
 local autocmds = {
   format_ts = {
-    { 'FileType typescript,typescriptreact setlocal formatprg=prettier\\ --parser\\ typescript' };
+    { 'FileType', 'typescript,typescriptreact', 'setlocal formatprg=prettier\\ --parser\\ typescript' };
   };
   format_js = {
-    { 'FileType javascript,javascriptreact setlocal formatprg=prettier\\ --parser\\ babel-flow' };
+    { 'FileType', 'javascript,javascriptreact', 'setlocal formatprg=prettier\\ --parser\\ babel-flow' };
   };
-  format_tf = {
-    { 'FileType tf,terraform let g:terraform_fmt_on_save=1' };
+  terraform_ft = {
+    { 'BufNewFile,BufRead', '*.tf,*.tfvars', 'set filetype=terraform' };
   };
   fsharp_ft = {
-    { 'BufNewFile,BufRead *.fs,*.fsx,*.fsi set filetype=fsharp' };
+    { 'BufNewFile,BufRead', '*.fs,*.fsx,*.fsi', 'set filetype=fsharp' };
   };
   fix_windows_terminal = {
     { 'VimLeave', '*', 'set guicursor=a:ver25' };

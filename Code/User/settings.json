@@ -2,5 +2,7 @@
     "editor.formatOnSave": true,
     "omnisharp.enableEditorConfigSupport": true,
     "omnisharp.enableRoslynAnalyzers": true,
-    "FSharp.useSdkScripts": true,
+    // vscode-neovim needs these ---
+    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+    "editor.scrollBeyondLastLine": false,
 }
